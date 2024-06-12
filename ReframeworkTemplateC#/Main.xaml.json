@@ -1,0 +1,45 @@
+{
+  "DisplayName": "Main",
+  "Tooltip": "[Process_Name]\n[Process description]\n[Author]\n\nTo modify:\n- provide process: name, description, author here and in project.json\n- change files names: Data\\Config_Process_Name.xlsx and Tests\\TS_Process_Name.xlsx to appropriate ones\n- edit Config values and move file to another directory if needed\n- add assets to Orchestrator if needed\n- update packages if needed\n- re-add test data Excel file, to TC workflows if needed\n- remove\\check unused imports\n- run analyzer\n- run parse XAML",
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "in_Environment",
+      "DisplayName": "in_Environment",
+      "Category": null,
+      "Tooltip": "Required string value. If value is set to:\nTest - then test settings will be used,\nProd - then production settings will be used.",
+      "Placeholder": "Test",
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_OrchestratorQueueName",
+      "DisplayName": "in_OrchestratorQueueName",
+      "Category": null,
+      "Tooltip": "Optional string value. Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file.",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "in_OrchestratorQueueFolder",
+      "DisplayName": "in_OrchestratorQueueFolder",
+      "Category": null,
+      "Tooltip": "Optional string value. Allows the Orchestrator folder name where the queue and all other assets are created to be passed as an argument, instead of only being defined in the configuration file.",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
