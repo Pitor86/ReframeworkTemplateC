@@ -1,16 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DeleteFiles" this:DeleteFiles.intDeleteFileRSNR="3" this:DeleteFiles.tsDeleteFileRSTS="00:00:03" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DeleteFiles" this:DeleteFiles.intDeleteFileRSNR="3" this:DeleteFiles.tsDeleteFileRSTS="00:00:03" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="dictFolderPath_FileExtension" Type="InArgument(scg:Dictionary(x:String, x:String))" />
     <x:Property Name="intDeleteFileRSNR" Type="InArgument(x:Int32)" />
     <x:Property Name="tsDeleteFileRSTS" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="dictFolderPath_FileExtensions" Type="InArgument(scg:Dictionary(x:String, s:String[]))" />
   </x:Members>
-  <this:DeleteFiles.dictFolderPath_FileExtension>
-    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
-      <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">new Dictionary&lt;String, String&gt;{{"Data\\Output", "*.xls?"}}</CSharpValue>
+  <this:DeleteFiles.dictFolderPath_FileExtensions>
+    <InArgument x:TypeArguments="scg:Dictionary(x:String, s:String[])">
+      <CSharpValue x:TypeArguments="scg:Dictionary(x:String, s:String[])" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">new Dictionary&lt;String, String[]&gt;{{"Data\\Output", new string[]{"*.xls?"}}}</CSharpValue>
     </InArgument>
-  </this:DeleteFiles.dictFolderPath_FileExtension>
+  </this:DeleteFiles.dictFolderPath_FileExtensions>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>634.4,625.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>674.4,625.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -111,99 +111,148 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 60" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 37" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Start - Delete Files"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through given items in dictionary." DisplayName="For Each - dictFolderPath_FileExtension" sap:VirtualizedContainerService.HintSize="353.6,100.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+    <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through given items in dictionary." DisplayName="For Each - dictFolderPath_FileExtensions" sap:VirtualizedContainerService.HintSize="353.6,100.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:String)">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:String)" Name="CurrentEntry" />
           </ActivityAction.Argument>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Delete files with given extension from given folder path." DisplayName="For Each - CurrentEntry.Key.ToString()" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through given extensions in dictionary entry." DisplayName="For Each - CurrentEntry.Value" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="ForEach`1_4">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:String" Name="CurrentFile" />
+                  <DelegateInArgument x:TypeArguments="x:String" Name="CurrentExtension" />
                 </ActivityAction.Argument>
-                <ui:RetryScope sap2010:Annotation.AnnotationText="Try to delete file." DisplayName="Retry Scope - Delete File" sap:VirtualizedContainerService.HintSize="220.8,56" sap2010:WorkflowViewState.IdRef="RetryScope_2">
-                  <ui:RetryScope.ActivityBody>
-                    <ActivityAction>
-                      <Sequence sap2010:Annotation.AnnotationText="Delete File." DisplayName="Action - Delete File" sap:VirtualizedContainerService.HintSize="416,53.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - 61" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
-                          <ui:LogMessage.Message>
-                            <InArgument x:TypeArguments="x:Object">
-                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">"Deleting: " + CurrentFile.ToString()</CSharpValue>
-                            </InArgument>
-                          </ui:LogMessage.Message>
-                        </ui:LogMessage>
-                        <ui:DeleteFileX DisplayName="Delete File - CurrentFile.ToString()" sap:VirtualizedContainerService.HintSize="353.6,112.8" sap2010:WorkflowViewState.IdRef="DeleteFileX_2">
-                          <ui:DeleteFileX.Path>
-                            <InArgument x:TypeArguments="x:String">
-                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">CurrentFile.ToString()</CSharpValue>
-                            </InArgument>
-                          </ui:DeleteFileX.Path>
-                        </ui:DeleteFileX>
-                        <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - boolTargetFileExists" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="PathExists_2" PathType="File">
-                          <ui:PathExists.Exists>
-                            <OutArgument x:TypeArguments="x:Boolean">
-                              <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">boolTargetFileExists</CSharpReference>
-                            </OutArgument>
-                          </ui:PathExists.Exists>
-                          <ui:PathExists.Path>
-                            <InArgument x:TypeArguments="x:String">
-                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">CurrentFile.ToString()</CSharpValue>
-                            </InArgument>
-                          </ui:PathExists.Path>
-                        </ui:PathExists>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:RetryScope.ActivityBody>
-                  <ui:RetryScope.Condition>
-                    <ActivityFunc x:TypeArguments="x:Boolean">
-                      <ui:CheckFalse ErrorMessage="{x:Null}" DisplayName="Check False - boolTargetFileExists" sap:VirtualizedContainerService.HintSize="333.6,131.2" sap2010:WorkflowViewState.IdRef="CheckFalse_2">
-                        <ui:CheckFalse.Expression>
-                          <InArgument x:TypeArguments="x:Boolean">
-                            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">boolTargetFileExists</CSharpValue>
-                          </InArgument>
-                        </ui:CheckFalse.Expression>
-                      </ui:CheckFalse>
-                    </ActivityFunc>
-                  </ui:RetryScope.Condition>
-                  <ui:RetryScope.NumberOfRetries>
-                    <InArgument x:TypeArguments="x:Int32">
-                      <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">intDeleteFileRSNR</CSharpValue>
-                    </InArgument>
-                  </ui:RetryScope.NumberOfRetries>
-                  <ui:RetryScope.RetryInterval>
-                    <InArgument x:TypeArguments="x:TimeSpan">
-                      <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">tsDeleteFileRSTS</CSharpValue>
-                    </InArgument>
-                  </ui:RetryScope.RetryInterval>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,180.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:RetryScope>
+                  <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Loop through found files in given directory." CurrentIndex="{x:Null}" DisplayName="For Each - GetFiles(CurrentEntry.Key.ToString(), CurrentExtension.ToString())" sap:VirtualizedContainerService.HintSize="353.6,92" sap2010:WorkflowViewState.IdRef="ForEach`1_3" MaxIterations="{x:Null}">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="CurrentFile" />
+                        </ActivityAction.Argument>
+                        <ui:RetryScope sap2010:Annotation.AnnotationText="Try to delete file." ContinueOnError="{x:Null}" DisplayName="Retry Scope - Delete File" sap:VirtualizedContainerService.HintSize="457.6,868.8" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <Sequence sap2010:Annotation.AnnotationText="Delete File." DisplayName="Action - Delete File" sap:VirtualizedContainerService.HintSize="416,546.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message - 38" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+                                  <ui:LogMessage.Message>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">
+                                        <CSharpValue.Result>
+                                          <OutArgument x:TypeArguments="x:Object" />
+                                        </CSharpValue.Result>"Deleting: " + CurrentFile.ToString()</CSharpValue>
+                                    </InArgument>
+                                  </ui:LogMessage.Message>
+                                </ui:LogMessage>
+                                <ui:DeleteFileX DisplayName="Delete File - CurrentFile.ToString()" sap:VirtualizedContainerService.HintSize="353.6,112.8" sap2010:WorkflowViewState.IdRef="DeleteFileX_2">
+                                  <ui:DeleteFileX.Path>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">
+                                        <CSharpValue.Result>
+                                          <OutArgument x:TypeArguments="x:String" />
+                                        </CSharpValue.Result>CurrentFile.ToString()</CSharpValue>
+                                    </InArgument>
+                                  </ui:DeleteFileX.Path>
+                                </ui:DeleteFileX>
+                                <ui:PathExists DisplayName="Path Exists - boolTargetFileExists" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="PathExists_2" PathType="File" Resource="{x:Null}">
+                                  <ui:PathExists.Exists>
+                                    <OutArgument x:TypeArguments="x:Boolean">
+                                      <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">
+                                        <CSharpReference.Result>
+                                          <OutArgument x:TypeArguments="Location(x:Boolean)" />
+                                        </CSharpReference.Result>boolTargetFileExists</CSharpReference>
+                                    </OutArgument>
+                                  </ui:PathExists.Exists>
+                                  <ui:PathExists.Path>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">
+                                        <CSharpValue.Result>
+                                          <OutArgument x:TypeArguments="x:String" />
+                                        </CSharpValue.Result>CurrentFile.ToString()</CSharpValue>
+                                    </InArgument>
+                                  </ui:PathExists.Path>
+                                </ui:PathExists>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean">
+                              <ui:CheckFalse DisplayName="Check False - boolTargetFileExists" ErrorMessage="{x:Null}" sap:VirtualizedContainerService.HintSize="333.6,131.2" sap2010:WorkflowViewState.IdRef="CheckFalse_2" Result="{x:Null}">
+                                <ui:CheckFalse.Expression>
+                                  <InArgument x:TypeArguments="x:Boolean">
+                                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">
+                                      <CSharpValue.Result>
+                                        <OutArgument x:TypeArguments="x:Boolean" />
+                                      </CSharpValue.Result>boolTargetFileExists</CSharpValue>
+                                  </InArgument>
+                                </ui:CheckFalse.Expression>
+                              </ui:CheckFalse>
+                            </ActivityFunc>
+                          </ui:RetryScope.Condition>
+                          <ui:RetryScope.NumberOfRetries>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">
+                                <CSharpValue.Result>
+                                  <OutArgument x:TypeArguments="x:Int32" />
+                                </CSharpValue.Result>intDeleteFileRSNR</CSharpValue>
+                            </InArgument>
+                          </ui:RetryScope.NumberOfRetries>
+                          <ui:RetryScope.RetryInterval>
+                            <InArgument x:TypeArguments="x:TimeSpan">
+                              <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">
+                                <CSharpValue.Result>
+                                  <OutArgument x:TypeArguments="x:TimeSpan" />
+                                </CSharpValue.Result>tsDeleteFileRSTS</CSharpValue>
+                            </InArgument>
+                          </ui:RetryScope.RetryInterval>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:RetryScope>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <ui:ForEach.Values>
+                      <InArgument x:TypeArguments="sc:IEnumerable">
+                        <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">System.IO.Directory.GetFiles(CurrentEntry.Key.ToString(), CurrentExtension.ToString())</CSharpValue>
+                      </InArgument>
+                    </ui:ForEach.Values>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
             <ui:ForEach.Values>
               <InArgument x:TypeArguments="sc:IEnumerable">
-                <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">System.IO.Directory.GetFiles(CurrentEntry.Key.ToString(), CurrentEntry.Value.ToString())</CSharpValue>
+                <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">CurrentEntry.Value</CSharpValue>
               </InArgument>
             </ui:ForEach.Values>
             <sap:WorkflowViewStateService.ViewState>
@@ -218,7 +267,7 @@
       </ui:ForEach.Body>
       <ui:ForEach.Values>
         <InArgument x:TypeArguments="sc:IEnumerable">
-          <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">dictFolderPath_FileExtension</CSharpValue>
+          <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">dictFolderPath_FileExtensions</CSharpValue>
         </InArgument>
       </ui:ForEach.Values>
       <sap:WorkflowViewStateService.ViewState>
@@ -229,7 +278,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message - 62" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 39" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">"Stop - Delete Files"</CSharpValue>
