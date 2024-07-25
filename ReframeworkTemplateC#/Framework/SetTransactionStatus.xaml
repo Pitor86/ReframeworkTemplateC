@@ -351,12 +351,8 @@
                 <TryCatch.Try>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Excel\\ExcelReportProcess.xaml - Success" sap:VirtualizedContainerService.HintSize="340,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Workflows\\Excel\\ExcelReportProcess.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">
-                        <Literal x:TypeArguments="x:Int32" Value="1" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport">
-                        <Literal x:TypeArguments="x:Boolean" />
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">1</InArgument>
+                      <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport">False</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="strTempExcelPath">
                         <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">in_Config["ExcelReportTempPath"].ToString()</CSharpValue>
                       </InArgument>
@@ -372,18 +368,10 @@
                       <InArgument x:TypeArguments="s:String[]" x:Key="arrNewRecord_1">
                         <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_116">arrNewRecord_Success</CSharpValue>
                       </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">
-                        <Literal x:TypeArguments="x:String">1</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">
-                        <Literal x:TypeArguments="x:String">ID</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">
-                        <Literal x:TypeArguments="x:String">Test123</Literal>
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">
-                        <Literal x:TypeArguments="x:String">NIP</Literal>
-                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">1</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">ID</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">Test123</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">NIP</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="strCellAddressToUpdate_2">
                         <Literal x:TypeArguments="x:String" Value="" />
                       </InArgument>
@@ -718,12 +706,8 @@
                     <TryCatch.Try>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Excel\\ExcelReportProcess.xaml - BE" sap:VirtualizedContainerService.HintSize="340,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Workflows\\Excel\\ExcelReportProcess.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">
-                            <Literal x:TypeArguments="x:Int32" Value="1" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport">
-                            <Literal x:TypeArguments="x:Boolean" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">1</InArgument>
+                          <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport">False</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="strTempExcelPath">
                             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_122">in_Config["ExcelReportTempPath"].ToString()</CSharpValue>
                           </InArgument>
@@ -739,18 +723,10 @@
                           <InArgument x:TypeArguments="s:String[]" x:Key="arrNewRecord_1">
                             <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_126">arrNewRecord_BE</CSharpValue>
                           </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">
-                            <Literal x:TypeArguments="x:String">1</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">
-                            <Literal x:TypeArguments="x:String">ID</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">
-                            <Literal x:TypeArguments="x:String">Test123</Literal>
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">
-                            <Literal x:TypeArguments="x:String">NIP</Literal>
-                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">1</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">ID</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">Test123</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">NIP</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="strCellAddressToUpdate_2">
                             <Literal x:TypeArguments="x:String" Value="" />
                           </InArgument>
@@ -943,7 +919,9 @@
                           <TryCatch.Try>
                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Outlook\\OutlookSendEmail.xaml - BEXX" sap:VirtualizedContainerService.HintSize="337.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Workflows\\Outlook\\OutlookSendEmail.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
-                                <InArgument x:TypeArguments="x:Int32" x:Key="intSMTP_1_Exchange_2_OutlookApp_3">2</InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="intSMTP_1_Exchange_2_Outlook_3">
+                                  <Literal x:TypeArguments="x:Int32" Value="2" />
+                                </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailTO">
                                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_181">strEmailTO</CSharpValue>
                                 </InArgument>
@@ -962,21 +940,27 @@
                                 <InArgument x:TypeArguments="scg:List(x:String)" x:Key="listAttachmentList">
                                   <CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_178">listEmailAttachment</CSharpValue>
                                 </InArgument>
-                                <InArgument x:TypeArguments="x:Boolean" x:Key="boolIsBodyHTML">True</InArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="boolIsBodyHTML">
+                                  <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailCredName_12">
                                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108">in_Config["OutlookCredName"].ToString()</CSharpValue>
                                 </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailCredFolder_12">
                                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_172">in_Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
                                 </InArgument>
-                                <InArgument x:TypeArguments="x:Int32" x:Key="intEmailPort_1">587</InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="intEmailPort_1">
+                                  <Literal x:TypeArguments="x:Int32" Value="587" />
+                                </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailDomain_2">
                                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_106">in_Config["OutlookDomain"].ToString()</CSharpValue>
                                 </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailServer_12">
                                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_105">in_Config["OutlookServer"].ToString()</CSharpValue>
                                 </InArgument>
-                                <InArgument x:TypeArguments="x:String" x:Key="strEmailAccount_3">piotr.gajewskirpa@gmail.com</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strEmailAccount_3">
+                                  <Literal x:TypeArguments="x:String">piotr.gajewskirpa@gmail.com</Literal>
+                                </InArgument>
                                 <InArgument x:TypeArguments="x:String" x:Key="strEmailDisplayName_12">
                                   <Literal x:TypeArguments="x:String" Value="" />
                                 </InArgument>
@@ -989,7 +973,9 @@
                                 <InArgument x:TypeArguments="x:Int32" x:Key="intGetCredTOms">
                                   <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
                                 </InArgument>
-                                <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsDelAfterSend">00:00:03</InArgument>
+                                <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsDelAfterSend">
+                                  <Literal x:TypeArguments="x:TimeSpan" Value="00:00:03" />
+                                </InArgument>
                               </ui:InvokeWorkflowFile.Arguments>
                             </ui:InvokeWorkflowFile>
                           </TryCatch.Try>

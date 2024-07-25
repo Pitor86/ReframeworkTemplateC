@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" this:SendEmail.intSMTP_1_Exchange_2_OutlookApp_3="2" this:SendEmail.strEmailTO="piotr.gajewskirpa@gmail.com" this:SendEmail.strEmailSubject="Test subject" this:SendEmail.strEmailBody="Hello,&lt;br&gt;&lt;br&gt;this is test E-mail.&lt;br&gt;&lt;br&gt;Robot" this:SendEmail.boolIsBodyHTML="True" this:SendEmail.strEmailCredName_12="Robot1_OutlookCredentials" this:SendEmail.strEmailCredFolder_12="Default" this:SendEmail.intEmailPort_1="587" this:SendEmail.strEmailDomain_2="domain_name" this:SendEmail.strEmailServer_12="https://outlook.domain_name.pl/EWS/Exchange.asmx" this:SendEmail.strEmailAccount_3="piotr.gajewskirpa@gmail.com" this:SendEmail.intSendEmailTOms="16000" this:SendEmail.intGetCredTOms="8000" this:SendEmail.tsDelAfterSend="00:00:03" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" this:SendEmail.intSMTP_1_Exchange_2_Outlook_3="2" this:SendEmail.strEmailTO="piotr.gajewskirpa@gmail.com" this:SendEmail.strEmailSubject="Test subject" this:SendEmail.strEmailBody="Hello,&lt;br&gt;&lt;br&gt;this is test E-mail.&lt;br&gt;&lt;br&gt;Robot" this:SendEmail.boolIsBodyHTML="True" this:SendEmail.strEmailCredName_12="Robot1_OutlookCredentials" this:SendEmail.strEmailCredFolder_12="Default" this:SendEmail.intEmailPort_1="587" this:SendEmail.strEmailDomain_2="domain_name" this:SendEmail.strEmailServer_12="https://outlook.domain_name.pl/EWS/Exchange.asmx" this:SendEmail.strEmailAccount_3="piotr.gajewskirpa@gmail.com" this:SendEmail.intSendEmailTOms="16000" this:SendEmail.intGetCredTOms="8000" this:SendEmail.tsDelAfterSend="00:00:03" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="intSMTP_1_Exchange_2_OutlookApp_3" Type="InArgument(x:Int32)" />
+    <x:Property Name="intSMTP_1_Exchange_2_Outlook_3" Type="InArgument(x:Int32)" />
     <x:Property Name="strEmailTO" Type="InArgument(x:String)" />
     <x:Property Name="strEmailCC" Type="InArgument(x:String)" />
     <x:Property Name="strEmailSubject" Type="InArgument(x:String)" />
@@ -156,7 +156,7 @@
       <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send E-mail with given details." DisplayName="OutlookSendEmail" sap:VirtualizedContainerService.HintSize="512,1033.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Send E-mail with given details.&#xA;smtp.office365.com" DisplayName="OutlookSendEmail" sap:VirtualizedContainerService.HintSize="512,1033.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strLogin" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrPass" />
@@ -166,10 +166,9 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 78" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 79" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_222">"Start - Outlook Send Email"</CSharpValue>
@@ -219,7 +218,7 @@
         </ui:GetRobotCredential>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,102.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,104.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -239,7 +238,7 @@
       <Assign DisplayName="Assign - strEmailTO" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
-            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">strEmailTO</CSharpReference>
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">strEmailTO</CSharpReference>
           </OutArgument>
         </Assign.To>
         <Assign.Value>
@@ -251,7 +250,7 @@
       <Assign DisplayName="Assign - strEmailCC" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">
-            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">strEmailCC</CSharpReference>
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">strEmailCC</CSharpReference>
           </OutArgument>
         </Assign.To>
         <Assign.Value>
@@ -365,7 +364,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <If sap2010:Annotation.AnnotationText="Is strAttachmentPath and listAttachmentList providd?" DisplayName="If - strAttachmentPath And listAttachmentList" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="If_5">
+      <If sap2010:Annotation.AnnotationText="Is strAttachmentPath and listAttachmentList providd?" DisplayName="If - strAttachmentPath And listAttachmentList" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="If_5">
         <If.Condition>
           <InArgument x:TypeArguments="x:Boolean">
             <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">!string.IsNullOrEmpty(strAttachmentPath) &amp;&amp; (listAttachmentList != null &amp;&amp; listAttachmentList.Count &gt; 0)</CSharpValue>
@@ -395,19 +394,18 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:LogMessage DisplayName="Log Message - 79" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
-        <ui:LogMessage.Message>
-          <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_OutlookApp_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_OutlookApp_3 == 2 ? "Exchange" : "Outlook Application") + 
-", Attachments: " + (intNoAttach_0_Path_1_List_2 == 0 ? "0" : intNoAttach_0_Path_1_List_2 == 1 ? "1" : listAttachmentList.Count.ToString())</CSharpValue>
-          </InArgument>
-        </ui:LogMessage.Message>
-      </ui:LogMessage>
     </Sequence>
-    <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use.&#xA;smtp.office365.com" DisplayName="Switch - intSMTP_1_Exchange_2_OutlookApp_3" sap:VirtualizedContainerService.HintSize="449.6,100.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use." DisplayName="Switch - intSMTP_1_Exchange_2_OutlookApp_3" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <Throw DisplayName="Throw - Invalid Option" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_3">
+          <InArgument x:TypeArguments="s:Exception">
+            <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_415">new ApplicationException("Invalid option selected. Please choose between: 1, 2 or 3")</CSharpValue>
+          </InArgument>
+        </Throw>
+      </Switch.Default>
       <Switch.Expression>
         <InArgument x:TypeArguments="x:Int32">
-          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">intSMTP_1_Exchange_2_OutlookApp_3</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">intSMTP_1_Exchange_2_Outlook_3</CSharpValue>
         </InArgument>
       </Switch.Expression>
       <sap:WorkflowViewStateService.ViewState>
@@ -417,7 +415,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Switch x:TypeArguments="x:Int32" x:Key="1" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - SMTP" sap:VirtualizedContainerService.HintSize="368.8,56" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch x:TypeArguments="x:Int32" x:Key="1" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - SMTP" sap:VirtualizedContainerService.HintSize="496.8,219.2" sap2010:WorkflowViewState.IdRef="Switch`1_2">
         <Switch.Expression>
           <InArgument x:TypeArguments="x:Int32">
             <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">intNoAttach_0_Path_1_List_2</CSharpValue>
@@ -426,7 +424,7 @@
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
@@ -863,7 +861,7 @@
           </If.Else>
         </If>
       </Switch>
-      <Switch x:TypeArguments="x:Int32" x:Key="2" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - Exchange" sap:VirtualizedContainerService.HintSize="390.4,56" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+      <Switch x:TypeArguments="x:Int32" x:Key="2" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - Exchange" sap:VirtualizedContainerService.HintSize="204,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_3">
         <Switch.Expression>
           <InArgument x:TypeArguments="x:Int32">
             <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">intNoAttach_0_Path_1_List_2</CSharpValue>
@@ -1293,7 +1291,7 @@
           </If.Else>
         </If>
       </Switch>
-      <Switch x:TypeArguments="x:Int32" x:Key="3" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - OutlookApp" sap:VirtualizedContainerService.HintSize="404,56" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+      <Switch x:TypeArguments="x:Int32" x:Key="3" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - OutlookApp" sap:VirtualizedContainerService.HintSize="204,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_4">
         <Switch.Expression>
           <InArgument x:TypeArguments="x:Int32">
             <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">intNoAttach_0_Path_1_List_2</CSharpValue>
@@ -1620,18 +1618,20 @@
         </If>
       </Switch>
     </Switch>
+    <ui:LogMessage DisplayName="Log Message - 80" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_417" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_Outlook_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_Outlook_3 == 2 ? "Exchange" : "Outlook Application") + 
+", Attachments: " + (intNoAttach_0_Path_1_List_2 == 0 ? "0" : intNoAttach_0_Path_1_List_2 == 1 ? "1" : listAttachmentList.Count.ToString()) + 
+", E-mail sent to: " + (string.IsNullOrEmpty(strEmailCC) ? strEmailTO : strEmailTO + ", CC: " + strEmailCC)</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
     <Delay DisplayName="Delay - tsDelAfterSend" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_1">
       <InArgument x:TypeArguments="x:TimeSpan">
         <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_414">tsDelAfterSend</CSharpValue>
       </InArgument>
     </Delay>
-    <ui:LogMessage DisplayName="Log Message - 80" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
-      <ui:LogMessage.Message>
-        <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">string.IsNullOrEmpty(strEmailCC) ? "E-mail sent to: " + strEmailTO : "E-mail sent to: " + strEmailTO + ", CC: " + strEmailCC</CSharpValue>
-        </InArgument>
-      </ui:LogMessage.Message>
-    </ui:LogMessage>
     <ui:LogMessage DisplayName="Log Message - 81" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">

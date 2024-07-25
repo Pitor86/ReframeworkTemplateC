@@ -1,7 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ExcelReportProcess" this:ExcelReportProcess.intAdd_1_Update_2="1" this:ExcelReportProcess.boolUseOutsideReport="False" this:ExcelReportProcess.strTempExcelPath="Data\yyyy-MM-dd_Template.xlsx" this:ExcelReportProcess.strTempExcelSheetName="Arkusz1" this:ExcelReportProcess.strFolderForReport="Data" this:ExcelReportProcess.strReportName="Process_Name" this:ExcelReportProcess.strIDToFind_2="1" this:ExcelReportProcess.strIDColumnName_2="ID" this:ExcelReportProcess.strValueToUpdate_2="Test123" this:ExcelReportProcess.strValueColumnName_2="NIP" this:ExcelReportProcess.tsExcelRSTS="00:00:08" this:ExcelReportProcess.intExcelRSNR="3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="intAdd_1_Update_2" Type="InArgument(x:Int32)" />
-    <x:Property sap2010:Annotation.AnnotationText="If set to True, different Excel file can be used for process, with below details provided:&#xD;&#xA;strTempExcelPath,&#xD;&#xA;strTempExcelSheetName." Name="boolUseOutsideReport" Type="InArgument(x:Boolean)" />
+    <x:Property sap2010:Annotation.AnnotationText="If set to True, different Excel file can be used for process, with below details provided:&#xA;strTempExcelPath,&#xA;strTempExcelSheetName." Name="boolUseOutsideReport" Type="InArgument(x:Boolean)" />
     <x:Property Name="strTempExcelPath" Type="InArgument(x:String)" />
     <x:Property Name="strTempExcelSheetName" Type="InArgument(x:String)" />
     <x:Property Name="strFolderForReport" Type="InArgument(x:String)" />
@@ -155,7 +155,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 43" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 64" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Start - Excel Report Process"</CSharpValue>
@@ -432,7 +432,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:LogMessage DisplayName="Log Message - 44" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info">
+                              <ui:LogMessage DisplayName="Log Message - 65" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info">
                                 <ui:LogMessage.Message>
                                   <InArgument x:TypeArguments="x:Object">
                                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">"Creating Excel Report in: " + strFolderForReport</CSharpValue>
@@ -497,7 +497,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                       </ui:RetryScope>
                     </If.Then>
                     <If.Else>
-                      <ui:LogMessage DisplayName="Log Message - 45" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace">
+                      <ui:LogMessage DisplayName="Log Message - 66" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
                             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">"Excel Report already exists in: " + strFolderForReport</CSharpValue>
@@ -512,10 +512,10 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
             <ui:RetryScope sap2010:Annotation.AnnotationText="Try to read Excel Report." DisplayName="Retry Scope - Read Range - dtExcelReport" sap:VirtualizedContainerService.HintSize="433.6,79.2" sap2010:WorkflowViewState.IdRef="RetryScope_2">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence sap2010:Annotation.AnnotationText="Read both Excel reports." DisplayName="Action - Read Range - dtExcelReport" sap:VirtualizedContainerService.HintSize="496,576.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence sap2010:Annotation.AnnotationText="Read both Excel reports." DisplayName="Action - Read Range - dtExcelReport" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
@@ -656,7 +656,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage DisplayName="Log Message - 46" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="Log Message - 26" Level="Trace">
+        <ui:LogMessage DisplayName="Log Message - 67" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="Log Message - 26" Level="Trace">
           <ui:LogMessage.Message>
             <InArgument x:TypeArguments="x:Object">
               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">"Adding new row"</CSharpValue>
@@ -702,10 +702,10 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
         <ui:RetryScope sap2010:Annotation.AnnotationText="Try to write Excel Report." DisplayName="Retry Scope - Write DataTable to Excel - dtTempReport - Add" sap:VirtualizedContainerService.HintSize="433.6,79.2" sap2010:WorkflowViewState.IdRef="RetryScope_3">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
-              <Sequence sap2010:Annotation.AnnotationText="Append new row." DisplayName="Write DataTable to Excel - dtTempReport - Add" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_39">
+              <Sequence sap2010:Annotation.AnnotationText="Append new row." DisplayName="Write DataTable to Excel - dtTempReport - Add" sap:VirtualizedContainerService.HintSize="496,487.2" sap2010:WorkflowViewState.IdRef="Sequence_39">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
@@ -722,18 +722,27 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="ReportWB" />
                             </ActivityAction.Argument>
-                            <ueab:WriteRangeX Append="True" DisplayName="Write DataTable to Excel - dtTempReport" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False">
-                              <ueab:WriteRangeX.Destination>
-                                <InArgument x:TypeArguments="ue:IReadWriteRangeRef">
-                                  <CSharpValue x:TypeArguments="ue:IReadWriteRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_140">ReportWB.Sheet[strTempExcelSheetName]</CSharpValue>
-                                </InArgument>
-                              </ueab:WriteRangeX.Destination>
-                              <ueab:WriteRangeX.Source>
-                                <InArgument x:TypeArguments="sd:DataTable">
-                                  <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_139">dtTempReport</CSharpValue>
-                                </InArgument>
-                              </ueab:WriteRangeX.Source>
-                            </ueab:WriteRangeX>
+                            <Sequence sap2010:Annotation.AnnotationText="Write Range." DisplayName="Excel Write Range - dtTempReport" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ueab:WriteRangeX Append="True" DisplayName="Write DataTable to Excel - dtTempReport" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False">
+                                <ueab:WriteRangeX.Destination>
+                                  <InArgument x:TypeArguments="ue:IReadWriteRangeRef">
+                                    <CSharpValue x:TypeArguments="ue:IReadWriteRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_156">ReportWB.Sheet[strTempExcelSheetName]</CSharpValue>
+                                  </InArgument>
+                                </ueab:WriteRangeX.Destination>
+                                <ueab:WriteRangeX.Source>
+                                  <InArgument x:TypeArguments="sd:DataTable">
+                                    <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_155">dtTempReport</CSharpValue>
+                                  </InArgument>
+                                </ueab:WriteRangeX.Source>
+                              </ueab:WriteRangeX>
+                            </Sequence>
                           </ActivityAction>
                         </ueab:ExcelApplicationCard.Body>
                         <sap:WorkflowViewStateService.ViewState>
@@ -769,7 +778,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                     <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:LogMessage DisplayName="Log Message - 47" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info">
+                <ui:LogMessage DisplayName="Log Message - 68" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_141">"Row number added: " + (intExcelReportRowsCount + 2).ToString()</CSharpValue>
@@ -822,7 +831,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:LogMessage sap:VirtualizedContainerService.HintSize="390.4,174.4" sap2010:WorkflowViewState.IdRef="Log Message - 48" Level="Trace">
+        <ui:LogMessage sap:VirtualizedContainerService.HintSize="390.4,174.4" sap2010:WorkflowViewState.IdRef="Log Message - 69" Level="Trace">
           <ui:LogMessage.Message>
             <InArgument x:TypeArguments="x:Object">
               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">"Updating existing row"</CSharpValue>
@@ -906,7 +915,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Find row number to update, using given ID." DisplayName="Lookup Data Table - intRowToUpdate" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_3">
+                    <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Find row number to update, using given ID." DisplayName="Lookup Data Table - intRowToUpdate" sap:VirtualizedContainerService.HintSize="334.4,326.4" sap2010:WorkflowViewState.IdRef="LookupDataTable_3">
                       <ui:LookupDataTable.DataTable>
                         <InArgument x:TypeArguments="sd:DataTable">
                           <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_119">dtExcelReport</CSharpValue>
@@ -929,7 +938,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                       </ui:LookupDataTable.RowIndex>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
@@ -1040,10 +1049,10 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
         <ui:RetryScope sap2010:Annotation.AnnotationText="Try to update Excel Report." DisplayName="Retry Scope - Write Cell - strValueToUpdate_2 - Update" sap:VirtualizedContainerService.HintSize="390.4,79.2" sap2010:WorkflowViewState.IdRef="RetryScope_4">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
-              <Sequence sap2010:Annotation.AnnotationText="Update cell." DisplayName="Write Cell - strValueToUpdate_2 - Update" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
+              <Sequence sap2010:Annotation.AnnotationText="Update cell." DisplayName="Write Cell - strValueToUpdate_2 - Update" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_46">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
@@ -1060,18 +1069,27 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="ReportWB" />
                             </ActivityAction.Argument>
-                            <ueab:WriteCellX DisplayName="Write Cell - strValueToUpdate_2" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_1">
-                              <ueab:WriteCellX.Cell>
-                                <InArgument x:TypeArguments="ue:IReadWriteCellRef">
-                                  <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_152">ReportWB.Sheet[strTempExcelSheetName].Cell[strCellAddressForUpdate]</CSharpValue>
-                                </InArgument>
-                              </ueab:WriteCellX.Cell>
-                              <ueab:WriteCellX.Value>
-                                <InArgument x:TypeArguments="x:Object">
-                                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_153">strValueToUpdate_2</CSharpValue>
-                                </InArgument>
-                              </ueab:WriteCellX.Value>
-                            </ueab:WriteCellX>
+                            <Sequence sap2010:Annotation.AnnotationText="Write Cell." DisplayName="Excel Write Cell - strValueToUpdate_2" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ueab:WriteCellX DisplayName="Write Cell - strValueToUpdate_2" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="WriteCellX_2">
+                                <ueab:WriteCellX.Cell>
+                                  <InArgument x:TypeArguments="ue:IReadWriteCellRef">
+                                    <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_157">ReportWB.Sheet[strTempExcelSheetName].Cell[strCellAddressForUpdate]</CSharpValue>
+                                  </InArgument>
+                                </ueab:WriteCellX.Cell>
+                                <ueab:WriteCellX.Value>
+                                  <InArgument x:TypeArguments="x:Object">
+                                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_158">strValueToUpdate_2</CSharpValue>
+                                  </InArgument>
+                                </ueab:WriteCellX.Value>
+                              </ueab:WriteCellX>
+                            </Sequence>
                           </ActivityAction>
                         </ueab:ExcelApplicationCard.Body>
                         <sap:WorkflowViewStateService.ViewState>
@@ -1097,7 +1115,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ueab:ExcelProcessScopeX>
-                <ui:LogMessage DisplayName="Log Message - 49" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info">
+                <ui:LogMessage DisplayName="Log Message - 70" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_154">"Row number updated: " + (string.IsNullOrEmpty(strCellAddressToUpdate_2) ? (intRowToUpdate + 2).ToString() : (intRowToUpdate).ToString())</CSharpValue>
@@ -1130,7 +1148,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
         </ui:RetryScope>
       </Sequence>
     </Switch>
-    <ui:LogMessage DisplayName="Log Message - 50" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 71" sap:VirtualizedContainerService.HintSize="353.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Stop - Excel Report Process"</CSharpValue>
