@@ -45,7 +45,7 @@
       "Name": "in_EnvironmentProd",
       "DisplayName": "in_EnvironmentProd",
       "Category": null,
-      "Tooltip": "Required boolean value. If value is set to:\nTrue (default) - then production settings will be used, \r\nFalse - then test settings will be used.",
+      "Tooltip": "Required boolean value. If value is set to:\nTrue (default) - then production settings will be used, \nFalse - then test settings will be used.",
       "Placeholder": "True",
       "Widget": null,
       "IsRequired": false,
