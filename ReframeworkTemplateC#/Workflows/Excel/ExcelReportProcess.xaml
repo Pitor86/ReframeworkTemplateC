@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExcelReportProcess" this:ExcelReportProcess.intAdd_1_Update_2="1" this:ExcelReportProcess.boolUseOutsideReport="False" this:ExcelReportProcess.strTempExcelPath="Data\yyyy-MM-dd_Template.xlsx" this:ExcelReportProcess.strTempExcelSheetName="Arkusz1" this:ExcelReportProcess.strFolderForReport="Data" this:ExcelReportProcess.strReportName="Process_Name" this:ExcelReportProcess.strIDToFind_2="1" this:ExcelReportProcess.strIDColumnName_2="ID" this:ExcelReportProcess.strValueToUpdate_2="Test123" this:ExcelReportProcess.strValueColumnName_2="NIP" this:ExcelReportProcess.tsExcelRSTS="00:00:08" this:ExcelReportProcess.intExcelRSNR="3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ExcelReportProcess" this:ExcelReportProcess.intAdd_1_Update_2="1" this:ExcelReportProcess.boolUseOutsideReport_3="False" this:ExcelReportProcess.strTempExcelPath_123="Data\yyyy-MM-dd_Template.xlsx" this:ExcelReportProcess.strTempExcelSheetName_123="Arkusz1" this:ExcelReportProcess.strFolderForReport_12="Data" this:ExcelReportProcess.strReportName_12="Process_Name" this:ExcelReportProcess.strIDToFind_2="1" this:ExcelReportProcess.strIDColumnName_2="ID" this:ExcelReportProcess.strValueToUpdate_2="Test123" this:ExcelReportProcess.strValueColumnName_2="NIP" this:ExcelReportProcess.tsExcelRSTS="00:00:08" this:ExcelReportProcess.intExcelRSNR="3" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="intAdd_1_Update_2" Type="InArgument(x:Int32)" />
-    <x:Property sap2010:Annotation.AnnotationText="If set to True, different Excel file can be used for process, with below details provided:&#xA;strTempExcelPath,&#xA;strTempExcelSheetName." Name="boolUseOutsideReport" Type="InArgument(x:Boolean)" />
-    <x:Property Name="strTempExcelPath" Type="InArgument(x:String)" />
-    <x:Property Name="strTempExcelSheetName" Type="InArgument(x:String)" />
-    <x:Property Name="strFolderForReport" Type="InArgument(x:String)" />
-    <x:Property Name="strReportName" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="If set to True, different Excel file can be used for process, with below details provided:&#xA;strTempExcelPath,&#xA;strTempExcelSheetName." Name="boolUseOutsideReport_3" Type="InArgument(x:Boolean)" />
+    <x:Property Name="strTempExcelPath_123" Type="InArgument(x:String)" />
+    <x:Property Name="strTempExcelSheetName_123" Type="InArgument(x:String)" />
+    <x:Property Name="strFolderForReport_12" Type="InArgument(x:String)" />
+    <x:Property Name="strReportName_12" Type="InArgument(x:String)" />
     <x:Property Name="arrNewRecord_1" Type="InArgument(s:String[])" />
     <x:Property Name="strIDToFind_2" Type="InArgument(x:String)" />
     <x:Property Name="strIDColumnName_2" Type="InArgument(x:String)" />
@@ -143,7 +143,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Prepare Excel report for Business." DisplayName="ExcelReportProcess" sap:VirtualizedContainerService.HintSize="717.6000000000001,596" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Prepare Excel report for Business." DisplayName="ExcelReportProcess" sap:VirtualizedContainerService.HintSize="787.2,597.24" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtExcelReport" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtTempReport" />
@@ -165,7 +165,7 @@
     <If sap2010:Annotation.AnnotationText="Outside Existing Excel report to be used?" DisplayName="If - boolUseOutsideReport" sap:VirtualizedContainerService.HintSize="416,100.8" sap2010:WorkflowViewState.IdRef="If_7">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
-          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_128">boolUseOutsideReport</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_128">boolUseOutsideReport_3</CSharpValue>
         </InArgument>
       </If.Condition>
       <sap:WorkflowViewStateService.ViewState>
@@ -212,7 +212,7 @@
                           </ui:ExcelReadRange.Range>
                           <ui:ExcelReadRange.SheetName>
                             <InArgument x:TypeArguments="x:String">
-                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_129">strTempExcelSheetName</CSharpValue>
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_129">strTempExcelSheetName_123</CSharpValue>
                             </InArgument>
                           </ui:ExcelReadRange.SheetName>
                         </ui:ExcelReadRange>
@@ -227,7 +227,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:ExcelApplicationScope.WorkbookPath>
                       <InArgument x:TypeArguments="x:String">
-                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_130">strTempExcelPath</CSharpValue>
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_130">strTempExcelPath_123</CSharpValue>
                       </InArgument>
                     </ui:ExcelApplicationScope.WorkbookPath>
                   </ui:ExcelApplicationScope>
@@ -274,7 +274,7 @@
               </Assign.To>
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_134">strTempExcelPath</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_163">strTempExcelPath_123</CSharpValue>
                 </InArgument>
               </Assign.Value>
             </Assign>
@@ -322,7 +322,7 @@
               </ui:PathExists.Exists>
               <ui:PathExists.Path>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">strTempExcelPath</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">strTempExcelPath_123</CSharpValue>
                 </InArgument>
               </ui:PathExists.Path>
             </ui:PathExists>
@@ -342,7 +342,7 @@
               <If.Then>
                 <Throw DisplayName="Throw - File Not Found" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_5">
                   <InArgument x:TypeArguments="s:Exception">
-                    <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_159">new ApplicationException("Temp Excel file not found: " + strTempExcelPath){Data = {{"ExType", "AE"}}}</CSharpValue>
+                    <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_159">new ApplicationException("Temp Excel file not found: " + strTempExcelPath_123){Data = {{"ExType", "AE"}}}</CSharpValue>
                   </InArgument>
                 </Throw>
               </If.Then>
@@ -366,8 +366,8 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">
-                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_135" xml:space="preserve">System.IO.Path.GetFileName(strTempExcelPath).ToString().
-Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 11).Split(".", StringSplitOptions.TrimEntries).First()</CSharpValue>
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_135" xml:space="preserve">System.IO.Path.GetFileName(strTempExcelPath_123).ToString().
+Substring(11, System.IO.Path.GetFileName(strTempExcelPath_123).ToString().Length - 11).Split(".", StringSplitOptions.TrimEntries).First()</CSharpValue>
                       </InArgument>
                     </Assign.Value>
                   </Assign>
@@ -379,7 +379,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">
-                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_136">System.IO.Path.GetFileName(strTempExcelPath).ToString().Replace("yyyy-MM-dd", strTodaysDate).Replace(strSubStringAfterDate, strReportName)</CSharpValue>
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_136">System.IO.Path.GetFileName(strTempExcelPath_123).ToString().Replace("yyyy-MM-dd", strTodaysDate).Replace(strSubStringAfterDate, strReportName_12)</CSharpValue>
                       </InArgument>
                     </Assign.Value>
                   </Assign>
@@ -391,7 +391,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">
-                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">Path.Combine(strFolderForReport, strReportNameToFind)</CSharpValue>
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">Path.Combine(strFolderForReport_12, strReportNameToFind)</CSharpValue>
                       </InArgument>
                     </Assign.Value>
                   </Assign>
@@ -435,7 +435,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                               <ui:LogMessage DisplayName="Log Message - 81" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info">
                                 <ui:LogMessage.Message>
                                   <InArgument x:TypeArguments="x:Object">
-                                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">"Creating Excel Report in: " + strFolderForReport</CSharpValue>
+                                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">"Creating Excel Report in: " + strFolderForReport_12</CSharpValue>
                                   </InArgument>
                                 </ui:LogMessage.Message>
                               </ui:LogMessage>
@@ -447,7 +447,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                                 </ui:CopyFile.Destination>
                                 <ui:CopyFile.Path>
                                   <InArgument x:TypeArguments="x:String">
-                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">strTempExcelPath</CSharpValue>
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">strTempExcelPath_123</CSharpValue>
                                   </InArgument>
                                 </ui:CopyFile.Path>
                               </ui:CopyFile>
@@ -500,7 +500,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                       <ui:LogMessage DisplayName="Log Message - 82" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
-                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">"Excel Report already exists in: " + strFolderForReport</CSharpValue>
+                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">"Excel Report already exists in: " + strFolderForReport_12</CSharpValue>
                           </InArgument>
                         </ui:LogMessage.Message>
                       </ui:LogMessage>
@@ -539,7 +539,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                             </ui:ExcelReadRange.Range>
                             <ui:ExcelReadRange.SheetName>
                               <InArgument x:TypeArguments="x:String">
-                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">strTempExcelSheetName</CSharpValue>
+                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">strTempExcelSheetName_123</CSharpValue>
                               </InArgument>
                             </ui:ExcelReadRange.SheetName>
                           </ui:ExcelReadRange>
@@ -577,7 +577,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                             </ui:ExcelReadRange.Range>
                             <ui:ExcelReadRange.SheetName>
                               <InArgument x:TypeArguments="x:String">
-                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_112">strTempExcelSheetName</CSharpValue>
+                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_112">strTempExcelSheetName_123</CSharpValue>
                               </InArgument>
                             </ui:ExcelReadRange.SheetName>
                           </ui:ExcelReadRange>
@@ -592,7 +592,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:ExcelApplicationScope.WorkbookPath>
                         <InArgument x:TypeArguments="x:String">
-                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">strTempExcelPath</CSharpValue>
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">strTempExcelPath_123</CSharpValue>
                         </InArgument>
                       </ui:ExcelApplicationScope.WorkbookPath>
                     </ui:ExcelApplicationScope>
@@ -624,7 +624,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
         </Sequence>
       </If.Else>
     </If>
-    <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Add or Update record in the Excel Report." DisplayName="Switch - intAdd_1_Update_2" sap:VirtualizedContainerService.HintSize="496.79999999999995,330.4" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Add or Update record in the Excel Report." DisplayName="Switch - intAdd_1_Update_2" sap:VirtualizedContainerService.HintSize="416,100.8" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <Throw DisplayName="Throw - Invalid Option" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_8">
           <InArgument x:TypeArguments="s:Exception">
@@ -733,7 +733,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                               <ueab:WriteRangeX Append="True" DisplayName="Write DataTable to Excel - dtTempReport" ExcludeHeaders="True" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False">
                                 <ueab:WriteRangeX.Destination>
                                   <InArgument x:TypeArguments="ue:IReadWriteRangeRef">
-                                    <CSharpValue x:TypeArguments="ue:IReadWriteRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_156">ReportWB.Sheet[strTempExcelSheetName]</CSharpValue>
+                                    <CSharpValue x:TypeArguments="ue:IReadWriteRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_156">ReportWB.Sheet[strTempExcelSheetName_123]</CSharpValue>
                                   </InArgument>
                                 </ueab:WriteRangeX.Destination>
                                 <ueab:WriteRangeX.Source>
@@ -1026,7 +1026,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                   </Assign.To>
                   <Assign.Value>
                     <InArgument x:TypeArguments="x:String">
-                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_147">strCellAddressToUpdate_2</CSharpValue>
+                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_164">strCellAddressToUpdate_2</CSharpValue>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
@@ -1080,7 +1080,7 @@ Substring(11, System.IO.Path.GetFileName(strTempExcelPath).ToString().Length - 1
                               <ueab:WriteCellX DisplayName="Write Cell - strValueToUpdate_2" sap:VirtualizedContainerService.HintSize="433.6,183.2" sap2010:WorkflowViewState.IdRef="WriteCellX_2">
                                 <ueab:WriteCellX.Cell>
                                   <InArgument x:TypeArguments="ue:IReadWriteCellRef">
-                                    <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_157">ReportWB.Sheet[strTempExcelSheetName].Cell[strCellAddressForUpdate]</CSharpValue>
+                                    <CSharpValue x:TypeArguments="ue:IReadWriteCellRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_157">ReportWB.Sheet[strTempExcelSheetName_123].Cell[strCellAddressForUpdate]</CSharpValue>
                                   </InArgument>
                                 </ueab:WriteCellX.Cell>
                                 <ueab:WriteCellX.Value>
