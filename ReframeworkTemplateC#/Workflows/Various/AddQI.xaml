@@ -122,7 +122,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Add Queue Item to Queue." DisplayName="AddQI" sap:VirtualizedContainerService.HintSize="717.6000000000001,2915.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Add Queue Item to Queue." DisplayName="AddQI" sap:VirtualizedContainerService.HintSize="743.2,1495.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ieQueueItemsAll" />
       <Variable x:TypeArguments="x:Int32" Name="intLoopCounter" />
@@ -135,14 +135,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 99" sap:VirtualizedContainerService.HintSize="635.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 97" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Start - Add QI"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetQueueItems Duration="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" sap2010:Annotation.AnnotationText="Get items from last week - except: Deleted." DisplayName="Get Queue Items - ieQueueItemsAll" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="635.2,206.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Failed, Successful, Abandoned, Retried">
+    <ui:GetQueueItems Duration="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" sap2010:Annotation.AnnotationText="Get items from last week - except: Deleted." DisplayName="Get Queue Items - ieQueueItemsAll" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="452.8,206.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Failed, Successful, Abandoned, Retried">
       <ui:GetQueueItems.FolderPath>
         <InArgument x:TypeArguments="x:String">
           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
@@ -174,19 +174,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetQueueItems>
-    <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Loop through the table, add QI with details." DisplayName="For Each Row in Data Table - dtExcelInputCases" sap:VirtualizedContainerService.HintSize="635.2,1934.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Loop through the table, add QI with details." DisplayName="For Each Row in Data Table - dtExcelInputCases" sap:VirtualizedContainerService.HintSize="452.8,514.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Prepare and add QI" sap:VirtualizedContainerService.HintSize="601.6,1705.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Prepare and add QI" sap:VirtualizedContainerService.HintSize="451.2,301.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="Get only rows with empty Status column." DisplayName="If - Status = &quot;&quot;" sap:VirtualizedContainerService.HintSize="568,1645.6" sap2010:WorkflowViewState.IdRef="If_3">
+            <If sap2010:Annotation.AnnotationText="Get only rows with empty Status column." DisplayName="If - Status = &quot;&quot;" sap:VirtualizedContainerService.HintSize="417.6,241.6" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Condition>
                 <InArgument x:TypeArguments="x:Boolean">
                   <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61" xml:space="preserve">dictColumnID_InputColumnName != null &amp;&amp; dictColumnID_InputColumnName.Keys.Count &gt; 0 &amp;&amp; dictColumnID_InputColumnName.Keys.Contains("Status") ? 
@@ -202,7 +203,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap2010:Annotation.AnnotationText="Add QI." DisplayName="Prepare QI" sap:VirtualizedContainerService.HintSize="534.4,1428" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence sap2010:Annotation.AnnotationText="Add QI." DisplayName="Prepare QI" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="strCurrentDate" />
                     <Variable x:TypeArguments="x:String" Name="strCellAddressForUpdate" />
@@ -213,12 +214,12 @@
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign - strCurrentDate" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assign - strCurrentDate" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">
                         <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">strCurrentDate</CSharpReference>
@@ -230,7 +231,7 @@
                       </InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Sequence sap2010:Annotation.AnnotationText="Based on given column name, set Status cell address." DisplayName="Set Status Cell Address" sap:VirtualizedContainerService.HintSize="500.8,88" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence sap2010:Annotation.AnnotationText="Based on given column name, set Status cell address." DisplayName="Set Status Cell Address" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Int32" Name="intColumnIndex" />
                       <Variable x:TypeArguments="x:String" Name="strColumnLetter" />
@@ -277,7 +278,7 @@
                       </Assign.Value>
                     </Assign>
                   </Sequence>
-                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get input data from Excel." DisplayName="Multiple Assign - Mandatory Data" sap:VirtualizedContainerService.HintSize="500.8,88" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get input data from Excel." DisplayName="Multiple Assign - Mandatory Data" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -326,7 +327,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:MultipleAssign>
-                  <Assign DisplayName="Assign - strReference" sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign - strReference" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">
                         <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">strReference</CSharpReference>
@@ -338,7 +339,7 @@
                       </InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Sequence sap2010:Annotation.AnnotationText="Check if all required data was collected." DisplayName="Validate Data" sap:VirtualizedContainerService.HintSize="500.8,88" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence sap2010:Annotation.AnnotationText="Check if all required data was collected." DisplayName="Validate Data" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="boolMissingInputData" />
                       <Variable x:TypeArguments="s:DateTime" Name="dateTempDate" />
@@ -393,7 +394,7 @@
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign - boolInvalidDateProvided - T" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                <Assign DisplayName="Assign - boolInvalidDateProvided" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_11">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:Boolean">
                                       <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">boolInvalidDateProvided</CSharpReference>
@@ -414,40 +415,51 @@
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Assign DisplayName="Assign - boolInvalidDateProvided - F" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Boolean">
-                                      <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">boolInvalidDateProvided</CSharpReference>
-                                    </OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <Assign DisplayName="Assign - dateTempDate" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="s:DateTime">
-                                      <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">dateTempDate</CSharpReference>
-                                    </OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="s:DateTime">
-                                      <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">DateTime.ParseExact(strValue3_Date, "MM/dd/yyyy HH:mm:ss", null)</CSharpValue>
-                                    </InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <Assign DisplayName="Assign - strValue3_Date" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_14">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">
-                                      <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">strValue3_Date</CSharpReference>
-                                    </OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">dateTempDate.ToString("yyyy-MM-dd")</CSharpValue>
-                                    </InArgument>
-                                  </Assign.Value>
-                                </Assign>
+                                <ui:MultipleAssign sap2010:Annotation.AnnotationText="Date is valid." DisplayName="Multiple Assign - Date Is Valid" sap:VirtualizedContainerService.HintSize="478.4,234.4" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                  <ui:MultipleAssign.AssignOperations>
+                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:Boolean">
+                                            <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">boolInvalidDateProvided</CSharpReference>
+                                          </OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="s:DateTime">
+                                            <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">dateTempDate</CSharpReference>
+                                          </OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="s:DateTime">
+                                            <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">DateTime.ParseExact(strValue3_Date, "MM/dd/yyyy HH:mm:ss", null)</CSharpValue>
+                                          </InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">
+                                            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">strValue3_Date</CSharpReference>
+                                          </OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">dateTempDate.ToString("yyyy-MM-dd")</CSharpValue>
+                                          </InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                    </scg:List>
+                                  </ui:MultipleAssign.AssignOperations>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:MultipleAssign>
                               </Sequence>
                             </If.Else>
                           </If>
@@ -554,7 +566,7 @@
                               </InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:LogMessage DisplayName="Log Message - 100" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
+                          <ui:LogMessage DisplayName="Log Message - 98" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
                                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68" xml:space="preserve">"Skipping item: " + strReference + ", row: " + Int32.Parse(System.Text.RegularExpressions.Regex.Match(strCellAddressForUpdate, "\\d+$").Value.ToString()) + 
@@ -588,7 +600,7 @@
                       </If.Else>
                     </If>
                   </Sequence>
-                  <If sap2010:Annotation.AnnotationText="Item ID found in the queue?" DisplayName="If - QI with given ID already exists" sap:VirtualizedContainerService.HintSize="500.8,845.6" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If sap2010:Annotation.AnnotationText="Item ID found in the queue?" DisplayName="If - QI with given ID already exists" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
                         <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">ieQueueItemsAll.AsEnumerable().Any(x =&gt; x.Reference.ToString() == strReference)</CSharpValue>
@@ -597,12 +609,12 @@
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap2010:Annotation.AnnotationText="Skip QI." DisplayName="Skip Queue Item" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence sap2010:Annotation.AnnotationText="Skip QI." DisplayName="Skip Queue Item" sap:VirtualizedContainerService.HintSize="467.2,56" sap2010:WorkflowViewState.IdRef="Sequence_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -610,7 +622,7 @@
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - 101" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 99" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49" xml:space="preserve">"Skipping item: " + strReference + 
@@ -681,7 +693,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                             </InArgument>
                           </ui:AddQueueItem.TimeoutMS>
                         </ui:AddQueueItem>
-                        <ui:LogMessage DisplayName="Log Message - 102" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 100" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">"Adding item: " + strReference</CSharpValue>
@@ -713,7 +725,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Continue DisplayName="Continue - Status Completed" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                  <ui:Continue DisplayName="Continue - Status Completed" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
                 </Sequence>
               </If.Else>
             </If>
@@ -736,14 +748,14 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="635.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 101" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">"Added: " + intQICounterAdded.ToString() + (intQICounterAdded == 0 | intQICounterAdded &gt; 1 ? " items to: " : " item to: ") + Config["OrchestratorQueueName"].ToString() + " queue"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 104" sap:VirtualizedContainerService.HintSize="635.2,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 102" sap:VirtualizedContainerService.HintSize="452.8,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">"Skipped: " + intQICounterSkipped.ToString() + (intQICounterSkipped == 0 | intQICounterSkipped &gt; 1 ? " items" : " item")</CSharpValue>
@@ -755,7 +767,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message - 105" sap:VirtualizedContainerService.HintSize="584,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="452.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Stop - Add QI"</CSharpValue>

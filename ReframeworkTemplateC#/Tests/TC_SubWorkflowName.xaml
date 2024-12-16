@@ -6,7 +6,7 @@
     <x:Property Name="intEmployeeCounter" Type="InArgument(x:Int32)" />
     <x:Property Name="boolSaveChanges_Expected" Type="InArgument(x:Boolean)" />
     <x:Property sap2010:Annotation.AnnotationText="Optional string value. Allows the Orchestrator folder name where the queue and all other assets are created to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueFolder" Type="InArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then production settings will be used, &#xD;&#xA;False - then test settings will be used." Name="in_EnvironmentProd" Type="InArgument(x:Boolean)" />
+    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then production settings will be used, &#xA;False - then test settings will be used." Name="in_EnvironmentProd" Type="InArgument(x:Boolean)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
   <sap:VirtualizedContainerService.HintSize>674.4,623.2</sap:VirtualizedContainerService.HintSize>
@@ -117,7 +117,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="For Workflow tests." DisplayName="TC_SubWorkflowName" sap:VirtualizedContainerService.HintSize="787.2,597.24" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="For Workflow tests." DisplayName="TC_SubWorkflowName" sap:VirtualizedContainerService.HintSize="760,597.24" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
       <Variable x:TypeArguments="njl:JObject" Name="jsonConfig" />
@@ -174,7 +174,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <TryCatch.Try>
-            <ui:GetRobotAsset AssetName="Process_Name_Config" CacheStrategy="None" DisplayName="Get Asset - strConfigFilePath" sap:VirtualizedContainerService.HintSize="334.4,143.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="8000">
+            <ui:GetRobotAsset AssetName="Process_Name_Config" CacheStrategy="None" DisplayName="Get Asset - strConfigFilePath" sap:VirtualizedContainerService.HintSize="433.6,143.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1" TimeoutMS="8000">
               <ui:GetRobotAsset.FolderPath>
                 <InArgument x:TypeArguments="x:String">
                   <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">in_OrchestratorQueueFolder</CSharpValue>
@@ -199,7 +199,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                 </ActivityAction.Argument>
-                <Assign DisplayName="Assign - strConfigFilePath" sap:VirtualizedContainerService.HintSize="433.6,80.8" sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign DisplayName="Assign - strConfigFilePath" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_9">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">
                       <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">strConfigFilePath</CSharpReference>
@@ -213,7 +213,7 @@
             </Catch>
           </TryCatch.Catches>
           <TryCatch.Finally>
-            <Sequence sap2010:Annotation.AnnotationText="Log Config file path &amp; Orchestrator folder." DisplayName="Finally - Log Config &amp; Folder" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence sap2010:Annotation.AnnotationText="Log Config file path &amp; Orchestrator folder." DisplayName="Finally - Log Config &amp; Folder" sap:VirtualizedContainerService.HintSize="433.6,56" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -221,19 +221,13 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message - 61" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn">
+              <ui:LogMessage DisplayName="Log Message - 61" sap:VirtualizedContainerService.HintSize="400,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
-                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44" xml:space="preserve">(System.IO.Path.GetDirectoryName(strConfigFilePath).Equals("Data") ? 
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48" xml:space="preserve">(System.IO.Path.GetDirectoryName(strConfigFilePath).Equals("Data") ? 
 "Using Local Config file: " + strConfigFilePath : 
-"Using Orchestrator asset Config file: " + strConfigFilePath)</CSharpValue>
-                  </InArgument>
-                </ui:LogMessage.Message>
-              </ui:LogMessage>
-              <ui:LogMessage DisplayName="Log Message - 62" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn">
-                <ui:LogMessage.Message>
-                  <InArgument x:TypeArguments="x:Object">
-                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">"Using Orchestrator folder: " + in_OrchestratorQueueFolder</CSharpValue>
+"Using Orchestrator asset Config file: " + strConfigFilePath) + Environment.NewLine + 
+"Using Orchestrator folder: " + in_OrchestratorQueueFolder</CSharpValue>
                   </InArgument>
                 </ui:LogMessage.Message>
               </ui:LogMessage>
@@ -420,7 +414,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - 63" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error">
+                <ui:LogMessage DisplayName="Log Message - 62" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -498,17 +492,11 @@
           </InArgument>
         </uta:VerifyExpressionWithOperator.SecondExpression>
       </uta:VerifyExpressionWithOperator>
-      <ui:LogMessage DisplayName="Log Message - 64" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn">
+      <ui:LogMessage DisplayName="Log Message - 63" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Warn">
         <ui:LogMessage.Message>
           <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">"***TC Result: " + (boolTCResult ? "Positive" : "Negative") + "***"</CSharpValue>
-          </InArgument>
-        </ui:LogMessage.Message>
-      </ui:LogMessage>
-      <ui:LogMessage DisplayName="Log Message - 65" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn">
-        <ui:LogMessage.Message>
-          <InArgument x:TypeArguments="x:Object">
-            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">"***TC Result2: " + (boolTCResult2 ? "Positive" : "Negative") + "***"</CSharpValue>
+            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49" xml:space="preserve">"***TC Result: " + (boolTCResult ? "Positive" : "Negative") + "***" + Environment.NewLine + 
+"***TC Result2: " + (boolTCResult2 ? "Positive" : "Negative") + "***"</CSharpValue>
           </InArgument>
         </ui:LogMessage.Message>
       </ui:LogMessage>
