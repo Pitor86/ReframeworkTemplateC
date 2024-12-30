@@ -60,6 +60,7 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -122,7 +123,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Add Queue Item to Queue." DisplayName="AddQI" sap:VirtualizedContainerService.HintSize="743.2,1495.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Add Queue Item to Queue." DisplayName="AddQI" sap:VirtualizedContainerService.HintSize="743.2,3333.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ieQueueItemsAll" />
       <Variable x:TypeArguments="x:Int32" Name="intLoopCounter" />
@@ -135,14 +136,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 97" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 97" sap:VirtualizedContainerService.HintSize="572.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Start - Add QI"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetQueueItems Duration="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" sap2010:Annotation.AnnotationText="Get items from last week - except: Deleted." DisplayName="Get Queue Items - ieQueueItemsAll" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="452.8,206.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Failed, Successful, Abandoned, Retried">
+    <ui:GetQueueItems Duration="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" sap2010:Annotation.AnnotationText="Get items from last week - except: Deleted." DisplayName="Get Queue Items - ieQueueItemsAll" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="572.8,206.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Failed, Successful, Abandoned, Retried">
       <ui:GetQueueItems.FolderPath>
         <InArgument x:TypeArguments="x:String">
           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
@@ -174,20 +175,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetQueueItems>
-    <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Loop through the table, add QI with details." DisplayName="For Each Row in Data Table - dtExcelInputCases" sap:VirtualizedContainerService.HintSize="452.8,514.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Loop through the table, add QI with details." DisplayName="For Each Row in Data Table - dtExcelInputCases" sap:VirtualizedContainerService.HintSize="572.8,2352.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Prepare and add QI" sap:VirtualizedContainerService.HintSize="451.2,301.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="Prepare and add QI" sap:VirtualizedContainerService.HintSize="571.2,2140" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="Get only rows with empty Status column." DisplayName="If - Status = &quot;&quot;" sap:VirtualizedContainerService.HintSize="417.6,241.6" sap2010:WorkflowViewState.IdRef="If_3">
+            <If sap2010:Annotation.AnnotationText="Get only rows with empty Status column." DisplayName="If - Status = &quot;&quot;" sap:VirtualizedContainerService.HintSize="537.6,2080" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Condition>
                 <InArgument x:TypeArguments="x:Boolean">
                   <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61" xml:space="preserve">dictColumnID_InputColumnName != null &amp;&amp; dictColumnID_InputColumnName.Keys.Count &gt; 0 &amp;&amp; dictColumnID_InputColumnName.Keys.Contains("Status") ? 
@@ -203,23 +204,27 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap2010:Annotation.AnnotationText="Add QI." DisplayName="Prepare QI" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence sap2010:Annotation.AnnotationText="Add QI." DisplayName="Prepare QI" sap:VirtualizedContainerService.HintSize="536,1894.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="strCurrentDate" />
                     <Variable x:TypeArguments="x:String" Name="strCellAddressForUpdate" />
                     <Variable x:TypeArguments="x:String" Name="strValue1" />
                     <Variable x:TypeArguments="x:String" Name="strValue2" />
-                    <Variable x:TypeArguments="x:String" Name="strReference" />
+                    <Variable x:TypeArguments="x:String" Name="strReference">
+                      <Variable.Default>
+                        <Literal x:TypeArguments="x:String">[null Reference]</Literal>
+                      </Variable.Default>
+                    </Variable>
                     <Variable x:TypeArguments="x:String" Name="strValue3_Date" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign - strCurrentDate" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="Assign - strCurrentDate" sap:VirtualizedContainerService.HintSize="502.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">
                         <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">strCurrentDate</CSharpReference>
@@ -231,7 +236,7 @@
                       </InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Sequence sap2010:Annotation.AnnotationText="Based on given column name, set Status cell address." DisplayName="Set Status Cell Address" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence sap2010:Annotation.AnnotationText="Based on given column name, set Status cell address." DisplayName="Set Status Cell Address" sap:VirtualizedContainerService.HintSize="502.4,88" sap2010:WorkflowViewState.IdRef="Sequence_8">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Int32" Name="intColumnIndex" />
                       <Variable x:TypeArguments="x:String" Name="strColumnLetter" />
@@ -278,7 +283,7 @@
                       </Assign.Value>
                     </Assign>
                   </Sequence>
-                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get input data from Excel." DisplayName="Multiple Assign - Mandatory Data" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="Get input data from Excel." DisplayName="Multiple Assign - Mandatory Data" sap:VirtualizedContainerService.HintSize="502.4,88" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -327,19 +332,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:MultipleAssign>
-                  <Assign DisplayName="Assign - strReference" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">
-                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">strReference</CSharpReference>
-                      </OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">
-                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">"Unique QI ID" + "_" + (intLoopCounter + 1).ToString()</CSharpValue>
-                      </InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Sequence sap2010:Annotation.AnnotationText="Check if all required data was collected." DisplayName="Validate Data" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence sap2010:Annotation.AnnotationText="Check if all required data was collected." DisplayName="Validate Data" sap:VirtualizedContainerService.HintSize="502.4,1320.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="boolMissingInputData" />
                       <Variable x:TypeArguments="s:DateTime" Name="dateTempDate" />
@@ -347,12 +340,12 @@
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If sap2010:Annotation.AnnotationText="Check if variable with date is provided." DisplayName="If - Date Variable Provided" sap:VirtualizedContainerService.HintSize="416,100.8" sap2010:WorkflowViewState.IdRef="If_6">
+                    <If sap2010:Annotation.AnnotationText="Check if variable with date is provided." DisplayName="If - Date Variable Provided" sap:VirtualizedContainerService.HintSize="468.8,100.8" sap2010:WorkflowViewState.IdRef="If_6">
                       <If.Condition>
                         <InArgument x:TypeArguments="x:Boolean">
                           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">!string.IsNullOrEmpty(strValue3_Date)</CSharpValue>
@@ -475,7 +468,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <If sap2010:Annotation.AnnotationText="Any value is null or empty?" DisplayName="If - Any Data is Empty" sap:VirtualizedContainerService.HintSize="416,88" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If sap2010:Annotation.AnnotationText="Any value is null or empty?" DisplayName="If - Any Data is Empty" sap:VirtualizedContainerService.HintSize="468.8,88" sap2010:WorkflowViewState.IdRef="If_4">
                       <If.Condition>
                         <InArgument x:TypeArguments="x:Boolean">
                           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">string.IsNullOrEmpty(strValue1) || string.IsNullOrEmpty(strValue2) || string.IsNullOrEmpty(strValue3_Date)</CSharpValue>
@@ -527,7 +520,7 @@
                         </Sequence>
                       </If.Else>
                     </If>
-                    <If sap2010:Annotation.AnnotationText="Any value is null or empty or invalid?" DisplayName="If - boolMissingInputData || boolInvalidDateProvided" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If sap2010:Annotation.AnnotationText="Any value is null or empty or invalid?" DisplayName="If - boolMissingInputData || boolInvalidDateProvided" sap:VirtualizedContainerService.HintSize="468.8,1008.8" sap2010:WorkflowViewState.IdRef="If_5">
                       <If.Condition>
                         <InArgument x:TypeArguments="x:Boolean">
                           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">boolMissingInputData || boolInvalidDateProvided</CSharpValue>
@@ -536,14 +529,15 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence sap2010:Annotation.AnnotationText="Log missing column names and skip row." DisplayName="Log &amp; Skip" sap:VirtualizedContainerService.HintSize="467.2,542.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <Sequence sap2010:Annotation.AnnotationText="Log missing column names and skip row." DisplayName="Log &amp; Skip" sap:VirtualizedContainerService.HintSize="467.2,758.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="s:String[]" Name="arrMissingColumnNames" />
+                            <Variable x:TypeArguments="x:String" Name="strSkippedMissingItemStatus" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -569,8 +563,8 @@
                           <ui:LogMessage DisplayName="Log Message - 98" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
-                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68" xml:space="preserve">"Skipping item: " + strReference + ", row: " + Int32.Parse(System.Text.RegularExpressions.Regex.Match(strCellAddressForUpdate, "\\d+$").Value.ToString()) + 
-(boolInvalidDateProvided ? ", invalid date format provided [" + dictColumnID_InputColumnName["DataOd"].ToString() + ": " + strValue3_Date + "]" : ", missing data [" + string.Join(", ", arrMissingColumnNames) + "]")</CSharpValue>
+                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91" xml:space="preserve">"Skipping item: " + strReference + ", row: " + Int32.Parse(System.Text.RegularExpressions.Regex.Match(strCellAddressForUpdate, "\\d+$").Value.ToString()) + 
+(boolInvalidDateProvided ? ", invalid date format provided: [" + dictColumnID_InputColumnName["DataOd"].ToString() + ": " + strValue3_Date + "]" : ", missing data: [" + string.Join(", ", arrMissingColumnNames) + "]")</CSharpValue>
                               </InArgument>
                             </ui:LogMessage.Message>
                           </ui:LogMessage>
@@ -586,11 +580,113 @@
                               </InArgument>
                             </Assign.Value>
                           </Assign>
+                          <Assign DisplayName="Assign - strSkippedMissingItemStatus" sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_13">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">
+                                <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">strSkippedMissingItemStatus</CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">
+                                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89" xml:space="preserve">"Pomijam, pozycja" + 
+(boolInvalidDateProvided ? " posiada nieprawidłowy format daty [Data od: " + strValue3_Date + "]" : 
+" nie ma uzupełnionych kolumn [" + string.Join(", ", arrMissingColumnNames) + "]")</CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <TryCatch sap2010:Annotation.AnnotationText="Try to update cell Status in Excel input file." DisplayName="Try Catch - Workflows\\Excel\\ExcelReportProcess.xaml - strSkippedMissingItemStatus" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <TryCatch.Try>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Excel\\ExcelReportProcess.xaml - strSkippedMissingItemStatus" sap:VirtualizedContainerService.HintSize="420.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Workflows\\Excel\\ExcelReportProcess.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">
+                                    <Literal x:TypeArguments="x:Int32" Value="2" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport_3">
+                                    <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strTempExcelPath_123">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">Config["ExcelInputFilePath"].ToString()</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strTempExcelSheetName_123">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">Config["ExcelInputSheet"].ToString()</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strFolderForReport_12">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strReportName_12">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="s:String[]" x:Key="arrNewRecord_1">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">null</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">strSkippedMissingItemStatus</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">
+                                    <Literal x:TypeArguments="x:String" Value="" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="strCellAddressToUpdate_2">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">strCellAddressForUpdate</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsExcelRSTS">
+                                    <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">TimeSpan.FromSeconds(Int32.Parse(jsonConfig["RS"]["ExcelReportProcess"]["TS"].ToString()))</CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="intExcelRSNR">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">Int32.Parse(jsonConfig["RS"]["ExcelReportProcess"]["NR"].ToString())</CSharpValue>
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.8,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="s:Exception">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                  </ActivityAction.Argument>
+                                  <ui:LogMessage DisplayName="Log Message - 99" sap:VirtualizedContainerService.HintSize="420.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error">
+                                    <ui:LogMessage.Message>
+                                      <InArgument x:TypeArguments="x:Object">
+                                        <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
+                                      </InArgument>
+                                    </ui:LogMessage.Message>
+                                  </ui:LogMessage>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                            <TryCatch.Finally>
+                              <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="420.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Sequence>
+                            </TryCatch.Finally>
+                          </TryCatch>
                           <ui:Continue DisplayName="Continue - Missing Data" sap:VirtualizedContainerService.HintSize="433.6,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
                         </Sequence>
                       </If.Then>
                       <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,89.6" sap2010:WorkflowViewState.IdRef="Sequence_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -600,7 +696,19 @@
                       </If.Else>
                     </If>
                   </Sequence>
-                  <If sap2010:Annotation.AnnotationText="Item ID found in the queue?" DisplayName="If - QI with given ID already exists" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="If_1">
+                  <Assign DisplayName="Assign - strReference" sap:VirtualizedContainerService.HintSize="502.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">
+                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">strReference</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">"Unique QI ID" + "_" + (intLoopCounter + 1).ToString()</CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If sap2010:Annotation.AnnotationText="Item ID found in the queue?" DisplayName="If - QI with given ID already exists" sap:VirtualizedContainerService.HintSize="502.4,79.2" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
                         <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">ieQueueItemsAll.AsEnumerable().Any(x =&gt; x.Reference.ToString() == strReference)</CSharpValue>
@@ -614,7 +722,10 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence sap2010:Annotation.AnnotationText="Skip QI." DisplayName="Skip Queue Item" sap:VirtualizedContainerService.HintSize="467.2,56" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence sap2010:Annotation.AnnotationText="Skip QI." DisplayName="Skip Queue Item" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="strSkippedDuplicatedItemStatus" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -622,7 +733,7 @@
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - 99" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 100" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49" xml:space="preserve">"Skipping item: " + strReference + 
@@ -631,7 +742,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                             </InArgument>
                           </ui:LogMessage.Message>
                         </ui:LogMessage>
-                        <Assign DisplayName="Assign - intQICounterSkipped - Duplicated Reference" sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign DisplayName="Assign - intQICounterSkipped - Duplicated Reference" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_4">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Int32">
                               <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">intQICounterSkipped</CSharpReference>
@@ -643,13 +754,107 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                             </InArgument>
                           </Assign.Value>
                         </Assign>
+                        <Assign DisplayName="Assign - strSkippedDuplicatedItemStatus" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">
+                              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">strSkippedDuplicatedItemStatus</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Pomijam, pozycja została już dodana do kolejki Robota</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <TryCatch sap2010:Annotation.AnnotationText="Try to update cell Status in Excel input file." DisplayName="Try Catch - Workflows\\Excel\\ExcelReportProcess.xaml - strSkippedDuplicatedItemStatus" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch.Try>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Excel\\ExcelReportProcess.xaml - strSkippedDuplicatedItemStatus" sap:VirtualizedContainerService.HintSize="420.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Workflows\\Excel\\ExcelReportProcess.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="intAdd_1_Update_2">2</InArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="boolUseOutsideReport_3">True</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strTempExcelPath_123">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">Config["ExcelInputFilePath"].ToString()</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strTempExcelSheetName_123">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">Config["ExcelInputSheet"].ToString()</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strFolderForReport_12">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strReportName_12">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="s:String[]" x:Key="arrNewRecord_1">
+                                  <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">null</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strIDToFind_2">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strIDColumnName_2">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strValueToUpdate_2">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">strSkippedDuplicatedItemStatus</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strValueColumnName_2">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="strCellAddressToUpdate_2">
+                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">strCellAddressForUpdate</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsExcelRSTS">
+                                  <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">TimeSpan.FromSeconds(Int32.Parse(jsonConfig["RS"]["ExcelReportProcess"]["TS"].ToString()))</CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="intExcelRSNR">
+                                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">Int32.Parse(jsonConfig["RS"]["ExcelReportProcess"]["NR"].ToString())</CSharpValue>
+                                </InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.8,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <ui:LogMessage DisplayName="Log Message - 101" sap:VirtualizedContainerService.HintSize="420.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error">
+                                  <ui:LogMessage.Message>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
+                                    </InArgument>
+                                  </ui:LogMessage.Message>
+                                </ui:LogMessage>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                          <TryCatch.Finally>
+                            <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="420.8,89.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </TryCatch.Finally>
+                        </TryCatch>
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap2010:Annotation.AnnotationText="Add new QI." DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="467.2,596.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence sap2010:Annotation.AnnotationText="Add new QI." DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
@@ -693,7 +898,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                             </InArgument>
                           </ui:AddQueueItem.TimeoutMS>
                         </ui:AddQueueItem>
-                        <ui:LogMessage DisplayName="Log Message - 100" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 102" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">"Adding item: " + strReference</CSharpValue>
@@ -718,14 +923,14 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="Skip Row" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Skip Row" sap:VirtualizedContainerService.HintSize="536,24.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Continue DisplayName="Continue - Status Completed" sap:VirtualizedContainerService.HintSize="449.6,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                  <ui:Continue DisplayName="Continue - Status Completed" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Continue_2" />
                 </Sequence>
               </If.Else>
             </If>
@@ -748,14 +953,14 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message - 101" sap:VirtualizedContainerService.HintSize="452.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="572.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">"Added: " + intQICounterAdded.ToString() + (intQICounterAdded == 0 | intQICounterAdded &gt; 1 ? " items to: " : " item to: ") + Config["OrchestratorQueueName"].ToString() + " queue"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 102" sap:VirtualizedContainerService.HintSize="452.8,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 104" sap:VirtualizedContainerService.HintSize="572.8,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">"Skipped: " + intQICounterSkipped.ToString() + (intQICounterSkipped == 0 | intQICounterSkipped &gt; 1 ? " items" : " item")</CSharpValue>
@@ -767,7 +972,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="452.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 105" sap:VirtualizedContainerService.HintSize="572.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Stop - Add QI"</CSharpValue>
