@@ -231,7 +231,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - 18" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Warn">
+                  <ui:LogMessage DisplayName="Log Message - 19" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Warn">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_290" xml:space="preserve">(System.IO.Path.GetDirectoryName(strConfigFilePath).Equals("Data") ? 
@@ -240,7 +240,7 @@
                       </InArgument>
                     </ui:LogMessage.Message>
                   </ui:LogMessage>
-                  <ui:LogMessage DisplayName="Log Message - 19" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Warn">
+                  <ui:LogMessage DisplayName="Log Message - 20" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_40" Level="Warn">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_291">"Using Orchestrator folder: " + in_OrchestratorQueueFolder</CSharpValue>
@@ -282,14 +282,14 @@
               </ui:DeserializeJson.JsonString>
             </ui:DeserializeJson>
           </Sequence>
-          <ui:LogMessage DisplayName="Log Message - 20" sap:VirtualizedContainerService.HintSize="470.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Warn">
+          <ui:LogMessage DisplayName="Log Message - 21" sap:VirtualizedContainerService.HintSize="470.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Warn">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_277">"Start - " + Config["logF_BusinessProcessName"].ToString() + " =&gt; " + DateTime.Now.ToString("HH:mm:ss tt")</CSharpValue>
               </InArgument>
             </ui:LogMessage.Message>
           </ui:LogMessage>
-          <ui:LogMessage DisplayName="Log Message - 21" sap:VirtualizedContainerService.HintSize="470.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info">
+          <ui:LogMessage DisplayName="Log Message - 22" sap:VirtualizedContainerService.HintSize="470.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_278">"The primary screen resolution is: " + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width.ToString() + " x " + System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height.ToString()</CSharpValue>

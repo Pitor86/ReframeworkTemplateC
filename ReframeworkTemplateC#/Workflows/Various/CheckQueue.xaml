@@ -122,7 +122,7 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create QI If Queue is empty And was not populated." DisplayName="CheckQueue" sap:VirtualizedContainerService.HintSize="783.2,1032.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
+  <Sequence sap2010:Annotation.AnnotationText="Create QI If Queue is empty And was not populated." DisplayName="CheckQueue" sap:VirtualizedContainerService.HintSize="783.2,2495.2" sap2010:WorkflowViewState.IdRef="Sequence_37">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strTodaysDate" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ieQueueItems" />
@@ -135,14 +135,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 102" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="520,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_261">"Start - Check Queue"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="433.6,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_4" QueueItemStates="New">
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="520,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_4" QueueItemStates="New">
       <ui:GetQueueItems.FolderPath>
         <InArgument x:TypeArguments="x:String">
           <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_285">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
@@ -164,7 +164,7 @@
         </InArgument>
       </ui:GetQueueItems.TimeoutMS>
     </ui:GetQueueItems>
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - boolFileQueueStartDate" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="PathExists_2" PathType="File">
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - boolFileQueueStartDate" sap:VirtualizedContainerService.HintSize="520,148" sap2010:WorkflowViewState.IdRef="PathExists_2" PathType="File">
       <ui:PathExists.Exists>
         <OutArgument x:TypeArguments="x:Boolean">
           <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_91">boolFileQueueStartDate</CSharpReference>
@@ -176,7 +176,7 @@
         </InArgument>
       </ui:PathExists.Path>
     </ui:PathExists>
-    <Assign DisplayName="Assign - strTodaysDate" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+    <Assign DisplayName="Assign - strTodaysDate" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
           <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_80">strTodaysDate</CSharpReference>
@@ -188,7 +188,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <If sap2010:Annotation.AnnotationText="Queue already populated?" DisplayName="If - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="433.6,88" sap2010:WorkflowViewState.IdRef="If_22">
+    <If sap2010:Annotation.AnnotationText="Queue already populated?" DisplayName="If - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="520,1550.4" sap2010:WorkflowViewState.IdRef="If_22">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_303">boolQueuePopulated</CSharpValue>
@@ -197,19 +197,19 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_45">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="518.4,168" sap2010:WorkflowViewState.IdRef="Sequence_45">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch sap2010:Annotation.AnnotationText="Try to create Queue start date text file, skip Queue populating." DisplayName="Try Catch - QI Already Added" sap:VirtualizedContainerService.HintSize="382.4,108" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+          <TryCatch sap2010:Annotation.AnnotationText="Try to create Queue start date text file, skip Queue populating." DisplayName="Try Catch - QI Already Added" sap:VirtualizedContainerService.HintSize="484.8,108" sap2010:WorkflowViewState.IdRef="TryCatch_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -226,7 +226,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - 103" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info">
+                <ui:LogMessage DisplayName="Log Message - 104" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_322">"QI already added to: " + Config["OrchestratorQueueName"].ToString() + " queue"</CSharpValue>
@@ -290,7 +290,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <ui:LogMessage DisplayName="Log Message - 104" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Error">
+                  <ui:LogMessage DisplayName="Log Message - 105" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_48" Level="Error">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_321">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -314,13 +314,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_46">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518.4,1212.8" sap2010:WorkflowViewState.IdRef="Sequence_46">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If sap2010:Annotation.AnnotationText="Add QI if Queue is empty." DisplayName="If - Add QI" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="If_23">
+          <If sap2010:Annotation.AnnotationText="Add QI if Queue is empty." DisplayName="If - Add QI" sap:VirtualizedContainerService.HintSize="484.8,1152.8" sap2010:WorkflowViewState.IdRef="If_23">
             <If.Condition>
               <InArgument x:TypeArguments="x:Boolean">
                 <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_304">ieQueueItems.Count() &gt; 0</CSharpValue>
@@ -329,7 +329,7 @@
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -349,15 +349,15 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <Sequence sap2010:Annotation.AnnotationText="Create Queue start date text file, skip Queue populating." DisplayName="Old QI" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                    <Sequence sap2010:Annotation.AnnotationText="Create Queue start date text file, skip Queue populating." DisplayName="Old QI" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_56">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message - 105" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info">
+                      <ui:LogMessage DisplayName="Log Message - 106" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
                             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_305">"There are old QI in: " + Config["OrchestratorQueueName"].ToString() + " queue: " + ieQueueItems.Count().ToString() + " or more"</CSharpValue>
@@ -427,7 +427,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                         </ActivityAction.Argument>
-                        <ui:LogMessage DisplayName="Log Message - 106" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Trace">
+                        <ui:LogMessage DisplayName="Log Message - 107" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Trace">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_330">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -451,26 +451,26 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="483.2,139.2" sap2010:WorkflowViewState.IdRef="Sequence_48">
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="483.2,824" sap2010:WorkflowViewState.IdRef="Sequence_48">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap2010:Annotation.AnnotationText="Add new QI to the Queue." DisplayName="Add QI" sap:VirtualizedContainerService.HintSize="449.6,79.2" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                <Sequence sap2010:Annotation.AnnotationText="Add new QI to the Queue." DisplayName="Add QI" sap:VirtualizedContainerService.HintSize="449.6,764" sap2010:WorkflowViewState.IdRef="Sequence_58">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictColumnID_InputColumnName" />
                     <Variable x:TypeArguments="sd:DataTable" Name="dtExcelInputCases" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - 107" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info">
+                  <ui:LogMessage DisplayName="Log Message - 108" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_331">"Queue: " + Config["OrchestratorQueueName"].ToString() + " is empty and not yet populated, trying to add new QI"</CSharpValue>
@@ -563,7 +563,7 @@
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                           </ActivityAction.Argument>
-                          <ui:LogMessage DisplayName="Log Message - 108" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Error">
+                          <ui:LogMessage DisplayName="Log Message - 109" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Error">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
                                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_344">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -590,7 +590,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Assign - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <Assign DisplayName="Assign - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">
           <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">boolQueuePopulated</CSharpReference>
@@ -600,7 +600,7 @@
         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - 109" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 110" sap:VirtualizedContainerService.HintSize="520,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_262">"Stop - Check Queue"</CSharpValue>
