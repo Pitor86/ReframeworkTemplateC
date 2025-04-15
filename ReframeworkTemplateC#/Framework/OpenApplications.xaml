@@ -137,7 +137,7 @@
       <AssemblyReference>mscorlib</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open needed applications and check Queue." DisplayName="Open Applications" sap:VirtualizedContainerService.HintSize="719.2,1351.2" sap2010:WorkflowViewState.IdRef="Sequence_43">
+  <Sequence sap2010:Annotation.AnnotationText="Open needed applications and check Queue." DisplayName="Open Applications" sap:VirtualizedContainerService.HintSize="753.6000000000001,1351.2" sap2010:WorkflowViewState.IdRef="Sequence_43">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -293,28 +293,48 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="433.6,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" Top="10">
-                <ui:GetQueueItems.FolderPath>
-                  <InArgument x:TypeArguments="x:String">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_320">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
-                  </InArgument>
-                </ui:GetQueueItems.FolderPath>
-                <ui:GetQueueItems.QueueName>
-                  <InArgument x:TypeArguments="x:String">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_318">Config["OrchestratorQueueName"].ToString()</CSharpValue>
-                  </InArgument>
-                </ui:GetQueueItems.QueueName>
-                <ui:GetQueueItems.Result>
-                  <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
-                    <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_81">ieQueueItems</CSharpReference>
-                  </OutArgument>
-                </ui:GetQueueItems.Result>
-                <ui:GetQueueItems.TimeoutMS>
+              <ui:RetryScope DisplayName="Retry Scope - Get Queue Items - ieQueueItems" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+                <ui:RetryScope.ActivityBody>
+                  <ActivityAction>
+                    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="334.4,143.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" Top="10">
+                      <ui:GetQueueItems.FolderPath>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_320">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
+                        </InArgument>
+                      </ui:GetQueueItems.FolderPath>
+                      <ui:GetQueueItems.QueueName>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_318">Config["OrchestratorQueueName"].ToString()</CSharpValue>
+                        </InArgument>
+                      </ui:GetQueueItems.QueueName>
+                      <ui:GetQueueItems.Result>
+                        <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+                          <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_81">ieQueueItems</CSharpReference>
+                        </OutArgument>
+                      </ui:GetQueueItems.Result>
+                      <ui:GetQueueItems.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32">
+                          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_319">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
+                        </InArgument>
+                      </ui:GetQueueItems.TimeoutMS>
+                    </ui:GetQueueItems>
+                  </ActivityAction>
+                </ui:RetryScope.ActivityBody>
+                <ui:RetryScope.Condition>
+                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                </ui:RetryScope.Condition>
+                <ui:RetryScope.NumberOfRetries>
                   <InArgument x:TypeArguments="x:Int32">
-                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_319">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
+                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_326">Int32.Parse(Config["RetryNumberSetTransactionStatus"].ToString())</CSharpValue>
                   </InArgument>
-                </ui:GetQueueItems.TimeoutMS>
-              </ui:GetQueueItems>
+                </ui:RetryScope.NumberOfRetries>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:RetryScope>
               <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists - boolFileQueueStartDate" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="PathExists_2" PathType="File">
                 <ui:PathExists.Exists>
                   <OutArgument x:TypeArguments="x:Boolean">

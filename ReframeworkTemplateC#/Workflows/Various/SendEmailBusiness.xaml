@@ -123,7 +123,7 @@
       <AssemblyReference>System.Xml.ReaderWriter</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send E-mail with Report to business." DisplayName="SendEmailBusiness" sap:VirtualizedContainerService.HintSize="719.2,1598.4" sap2010:WorkflowViewState.IdRef="Sequence_74">
+  <Sequence sap2010:Annotation.AnnotationText="Send E-mail with Report to business." DisplayName="SendEmailBusiness" sap:VirtualizedContainerService.HintSize="753.6000000000001,1480" sap2010:WorkflowViewState.IdRef="Sequence_74">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ieQueueItems" />
       <Variable x:TypeArguments="x:String" Name="strEmailTO_Report" />
@@ -150,28 +150,48 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="449.6,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" Top="10">
-      <ui:GetQueueItems.FolderPath>
-        <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_455">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
-        </InArgument>
-      </ui:GetQueueItems.FolderPath>
-      <ui:GetQueueItems.QueueName>
-        <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_453">Config["OrchestratorQueueName"].ToString()</CSharpValue>
-        </InArgument>
-      </ui:GetQueueItems.QueueName>
-      <ui:GetQueueItems.Result>
-        <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
-          <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_115">ieQueueItems</CSharpReference>
-        </OutArgument>
-      </ui:GetQueueItems.Result>
-      <ui:GetQueueItems.TimeoutMS>
+    <ui:RetryScope DisplayName="Retry Scope - Get Queue Items - ieQueueItems" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="334.4,143.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New" Top="10">
+            <ui:GetQueueItems.FolderPath>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_455">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.FolderPath>
+            <ui:GetQueueItems.QueueName>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_453">Config["OrchestratorQueueName"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.QueueName>
+            <ui:GetQueueItems.Result>
+              <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+                <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_115">ieQueueItems</CSharpReference>
+              </OutArgument>
+            </ui:GetQueueItems.Result>
+            <ui:GetQueueItems.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32">
+                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_488">Int32.Parse(jsonConfig["TOms"]["Long"].ToString())</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.TimeoutMS>
+          </ui:GetQueueItems>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+      <ui:RetryScope.NumberOfRetries>
         <InArgument x:TypeArguments="x:Int32">
-          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_488">Int32.Parse(jsonConfig["TOms"]["Long"].ToString())</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_497">Int32.Parse(Config["RetryNumberSetTransactionStatus"].ToString())</CSharpValue>
         </InArgument>
-      </ui:GetQueueItems.TimeoutMS>
-    </ui:GetQueueItems>
+      </ui:RetryScope.NumberOfRetries>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
     <Assign DisplayName="Assign - strEmailTO_Report" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_60">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">

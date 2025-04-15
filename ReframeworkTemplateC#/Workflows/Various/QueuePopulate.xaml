@@ -122,7 +122,7 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create QI If Queue is empty And was not populated." DisplayName="QueuePopulate" sap:VirtualizedContainerService.HintSize="789.6000000000001,2248" sap2010:WorkflowViewState.IdRef="Sequence_37">
+  <Sequence sap2010:Annotation.AnnotationText="Create QI If Queue is empty And was not populated." DisplayName="QueuePopulate" sap:VirtualizedContainerService.HintSize="753.6000000000001,652.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="ieQueueItems" />
     </Sequence.Variables>
@@ -133,36 +133,56 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 114" sap:VirtualizedContainerService.HintSize="520,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 114" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_345">"Start - Queue Populate"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="520,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_4" QueueItemStates="New">
-      <ui:GetQueueItems.FolderPath>
-        <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_285">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
-        </InArgument>
-      </ui:GetQueueItems.FolderPath>
-      <ui:GetQueueItems.QueueName>
-        <InArgument x:TypeArguments="x:String">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_283">Config["OrchestratorQueueName"].ToString()</CSharpValue>
-        </InArgument>
-      </ui:GetQueueItems.QueueName>
-      <ui:GetQueueItems.Result>
-        <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
-          <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_81">ieQueueItems</CSharpReference>
-        </OutArgument>
-      </ui:GetQueueItems.Result>
-      <ui:GetQueueItems.TimeoutMS>
+    <ui:RetryScope DisplayName="Retry Scope - Get Queue Items - ieQueueItems" sap:VirtualizedContainerService.HintSize="433.6,56.8" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items - ieQueueItems" FilterStrategy="Equals" sap:VirtualizedContainerService.HintSize="334.4,143.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_4" QueueItemStates="New">
+            <ui:GetQueueItems.FolderPath>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_285">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.FolderPath>
+            <ui:GetQueueItems.QueueName>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_283">Config["OrchestratorQueueName"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.QueueName>
+            <ui:GetQueueItems.Result>
+              <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+                <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_81">ieQueueItems</CSharpReference>
+              </OutArgument>
+            </ui:GetQueueItems.Result>
+            <ui:GetQueueItems.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32">
+                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_284">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.TimeoutMS>
+          </ui:GetQueueItems>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+      <ui:RetryScope.NumberOfRetries>
         <InArgument x:TypeArguments="x:Int32">
-          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_284">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_350">Int32.Parse(Config["RetryNumberSetTransactionStatus"].ToString())</CSharpValue>
         </InArgument>
-      </ui:GetQueueItems.TimeoutMS>
-    </ui:GetQueueItems>
-    <If sap2010:Annotation.AnnotationText="Queue already populated?" DisplayName="If - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="520,1564.8" sap2010:WorkflowViewState.IdRef="If_22">
+      </ui:RetryScope.NumberOfRetries>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <If sap2010:Annotation.AnnotationText="Queue already populated?" DisplayName="If - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="433.6,88" sap2010:WorkflowViewState.IdRef="If_22">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_303">boolQueuePopulated</CSharpValue>
@@ -171,7 +191,7 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -316,7 +336,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Assign - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="520,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <Assign DisplayName="Assign - boolQueuePopulated" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">
           <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">boolQueuePopulated</CSharpReference>
@@ -326,7 +346,7 @@
         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - 118" sap:VirtualizedContainerService.HintSize="520,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 118" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_346">"Stop - Queue Populate"</CSharpValue>
