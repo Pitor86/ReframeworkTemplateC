@@ -178,7 +178,7 @@
         </InArgument>
       </ui:SaveImage.Image>
     </ui:SaveImage>
-    <ui:LogMessage DisplayName="Log Message - 51" sap:VirtualizedContainerService.HintSize="435.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn">
+    <ui:LogMessage DisplayName="Log Message - 52" sap:VirtualizedContainerService.HintSize="435.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">"Screenshot saved at: "+io_FilePath</CSharpValue>

@@ -231,7 +231,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message - 35" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn">
+                                <ui:LogMessage DisplayName="Log Message - 36" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn">
                                   <ui:LogMessage.Message>
                                     <InArgument x:TypeArguments="x:Object">
                                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">"Could not set the transaction status. "+exception.Message+" At Source: "+exception.Source</CSharpValue>
@@ -294,7 +294,7 @@
                   </InArgument>
                 </ui:AddLogFields.Fields>
               </ui:AddLogFields>
-              <ui:LogMessage DisplayName="Log Message - 36" sap:VirtualizedContainerService.HintSize="387.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1">
+              <ui:LogMessage DisplayName="Log Message - 37" sap:VirtualizedContainerService.HintSize="387.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1">
                 <ui:LogMessage.Level>
                   <InArgument x:TypeArguments="ui:LogLevel">
                     <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">LogLevel.Info</CSharpValue>
@@ -422,7 +422,7 @@
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - 37" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Error">
+                          <ui:LogMessage DisplayName="Log Message - 38" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Error">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
                                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_230">"Invalid option selected. Please choose between: 0, 1 or 2."</CSharpValue>
@@ -613,7 +613,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </Assign>
-                            <ui:LogMessage DisplayName="Log Message - 38" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info">
+                            <ui:LogMessage DisplayName="Log Message - 39" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info">
                               <ui:LogMessage.Message>
                                 <InArgument x:TypeArguments="x:Object">
                                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_252">"Status for report: " + arrNewRecord[4].ToString()</CSharpValue>
@@ -676,7 +676,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <ui:LogMessage DisplayName="Log Message - 39" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Error">
+                                    <ui:LogMessage DisplayName="Log Message - 40" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Error">
                                       <ui:LogMessage.Message>
                                         <InArgument x:TypeArguments="x:Object">
                                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_250">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -760,7 +760,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <ui:LogMessage DisplayName="Log Message - 40" sap:VirtualizedContainerService.HintSize="422.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Error">
+                                    <ui:LogMessage DisplayName="Log Message - 41" sap:VirtualizedContainerService.HintSize="422.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Error">
                                       <ui:LogMessage.Message>
                                         <InArgument x:TypeArguments="x:Object">
                                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_261">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -790,7 +790,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - 41" sap:VirtualizedContainerService.HintSize="467.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace">
+                          <ui:LogMessage DisplayName="Log Message - 42" sap:VirtualizedContainerService.HintSize="467.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Trace">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
                                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_241">"Skipping reporting, transaction to be retried"</CSharpValue>
@@ -915,7 +915,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message - 42" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn">
+                                    <ui:LogMessage DisplayName="Log Message - 43" sap:VirtualizedContainerService.HintSize="353.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Warn">
                                       <ui:LogMessage.Message>
                                         <InArgument x:TypeArguments="x:Object">
                                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">"Could not set the transaction status. "+exception.Message+" At Source: "+exception.Source</CSharpValue>
@@ -981,7 +981,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                       </InArgument>
                     </ui:AddLogFields.Fields>
                   </ui:AddLogFields>
-                  <ui:LogMessage DisplayName="Log Message - 43" sap:VirtualizedContainerService.HintSize="387.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+                  <ui:LogMessage DisplayName="Log Message - 44" sap:VirtualizedContainerService.HintSize="387.2,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">in_Config["LogMessage_BusinessRuleException"].ToString() + in_BusinessException.Message</CSharpValue>
@@ -1065,7 +1065,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                   </Assign>
                   <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Based on Business Exception number, send E-mail to business." DisplayName="Switch - strBENumber" sap:VirtualizedContainerService.HintSize="433.6,425.6" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                     <Switch.Default>
-                      <ui:LogMessage DisplayName="Log Message - 44" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Trace">
+                      <ui:LogMessage DisplayName="Log Message - 45" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Trace">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
                             <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_199">"BE number: " + strBENumber + " =&gt; Not sending any E-mail to business"</CSharpValue>
@@ -1231,7 +1231,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <ui:LogMessage DisplayName="Log Message - 45" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error">
+                                <ui:LogMessage DisplayName="Log Message - 46" sap:VirtualizedContainerService.HintSize="416,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error">
                                   <ui:LogMessage.Message>
                                     <InArgument x:TypeArguments="x:Object">
                                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_143">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -1313,7 +1313,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                     </InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:LogMessage DisplayName="Log Message - 46" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info">
+                <ui:LogMessage DisplayName="Log Message - 47" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">"Consecutive system exception counter is " + io_ConsecutiveSystemExceptions.ToString() + "."</CSharpValue>
@@ -1364,7 +1364,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <ui:LogMessage DisplayName="Log Message - 47" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn">
+                        <ui:LogMessage DisplayName="Log Message - 48" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Warn">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_209">"Failed to take screenshot: " + Exception.Message + ", At Source: " + Exception.Source</CSharpValue>
@@ -1470,7 +1470,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message - 48" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7">
+                                    <ui:LogMessage DisplayName="Log Message - 49" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_7">
                                       <ui:LogMessage.Message>
                                         <InArgument x:TypeArguments="x:Object">
                                           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">"Could not set the transaction status. "+exception.Message</CSharpValue>
@@ -1593,7 +1593,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - 49" sap:VirtualizedContainerService.HintSize="438.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn">
+                          <ui:LogMessage DisplayName="Log Message - 50" sap:VirtualizedContainerService.HintSize="438.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn">
                             <ui:LogMessage.Message>
                               <InArgument x:TypeArguments="x:Object">
                                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">"CloseAllApplications failed. "+Exception.Message+" at Source: "+Exception.Source</CSharpValue>
@@ -1626,7 +1626,7 @@ arrNewRecord[4].ToString().Replace("\n", " ")</CSharpValue>
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                                   </ActivityAction.Argument>
-                                  <ui:LogMessage DisplayName="Log Message - 50" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5">
+                                  <ui:LogMessage DisplayName="Log Message - 51" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5">
                                     <ui:LogMessage.Level>
                                       <InArgument x:TypeArguments="ui:LogLevel">
                                         <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">LogLevel.Warn</CSharpValue>

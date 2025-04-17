@@ -133,7 +133,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 114" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 115" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_345">"Start - Queue Populate"</CSharpValue>
@@ -172,7 +172,7 @@
       </ui:RetryScope.Condition>
       <ui:RetryScope.NumberOfRetries>
         <InArgument x:TypeArguments="x:Int32">
-          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_350">Int32.Parse(Config["RetryNumberSetTransactionStatus"].ToString())</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_351">Int32.Parse(Config["RetryNumberGetTransactionItem"].ToString())</CSharpValue>
         </InArgument>
       </ui:RetryScope.NumberOfRetries>
       <sap:WorkflowViewStateService.ViewState>
@@ -203,10 +203,10 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - 115" sap:VirtualizedContainerService.HintSize="484.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info">
+          <ui:LogMessage DisplayName="Log Message - 116" sap:VirtualizedContainerService.HintSize="484.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
-                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_347">"QI already added to: " + Config["OrchestratorQueueName"].ToString() + " queue"</CSharpValue>
+                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_352">"QI already added to: " + Config["OrchestratorQueueName"].ToString() + " queue: " + ieQueueItems.Count().ToString() + " or more"</CSharpValue>
               </InArgument>
             </ui:LogMessage.Message>
           </ui:LogMessage>
@@ -239,7 +239,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - 116" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info">
+                <ui:LogMessage DisplayName="Log Message - 117" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_348">"There are old QI in: " + Config["OrchestratorQueueName"].ToString() + " queue: " + ieQueueItems.Count().ToString() + " or more"</CSharpValue>
@@ -274,7 +274,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - 117" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info">
+                  <ui:LogMessage DisplayName="Log Message - 118" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info">
                     <ui:LogMessage.Message>
                       <InArgument x:TypeArguments="x:Object">
                         <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_331">"Queue: " + Config["OrchestratorQueueName"].ToString() + " is empty and not yet populated, trying to add new QI"</CSharpValue>
@@ -346,7 +346,7 @@
         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - 118" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 119" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_346">"Stop - Queue Populate"</CSharpValue>

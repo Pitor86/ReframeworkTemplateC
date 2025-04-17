@@ -136,7 +136,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 107" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 108" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_102">"Start - Queue Add Items"</CSharpValue>
@@ -185,7 +185,7 @@
       </ui:RetryScope.Condition>
       <ui:RetryScope.NumberOfRetries>
         <InArgument x:TypeArguments="x:Int32">
-          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_115">Int32.Parse(Config["RetryNumberSetTransactionStatus"].ToString())</CSharpValue>
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_116">Int32.Parse(Config["RetryNumberGetTransactionItem"].ToString())</CSharpValue>
         </InArgument>
       </ui:RetryScope.NumberOfRetries>
       <sap:WorkflowViewStateService.ViewState>
@@ -492,7 +492,7 @@
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - 108" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 109" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49" xml:space="preserve">"Skipping item: " + strReference + 
@@ -587,7 +587,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <ui:LogMessage DisplayName="Log Message - 109" sap:VirtualizedContainerService.HintSize="420.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error">
+                                <ui:LogMessage DisplayName="Log Message - 110" sap:VirtualizedContainerService.HintSize="420.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Error">
                                   <ui:LogMessage.Message>
                                     <InArgument x:TypeArguments="x:Object">
                                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">"=&gt;Error: " + exception.Message + Environment.NewLine + "=&gt;At: " + exception.Source + "."</CSharpValue>
@@ -657,7 +657,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
                             </InArgument>
                           </ui:AddQueueItem.TimeoutMS>
                         </ui:AddQueueItem>
-                        <ui:LogMessage DisplayName="Log Message - 110" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+                        <ui:LogMessage DisplayName="Log Message - 111" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
                           <ui:LogMessage.Message>
                             <InArgument x:TypeArguments="x:Object">
                               <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">"Adding item: " + strReference</CSharpValue>
@@ -712,14 +712,14 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:LogMessage DisplayName="Log Message - 111" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 112" sap:VirtualizedContainerService.HintSize="548.8,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">"Added: " + intQICounterAdded.ToString() + (intQICounterAdded == 0 | intQICounterAdded &gt; 1 ? " items to: " : " item to: ") + Config["OrchestratorQueueName"].ToString() + " queue"</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 112" sap:VirtualizedContainerService.HintSize="548.8,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Add Workflow to handle skipped QI !!!" DisplayName="Log Message - 113" sap:VirtualizedContainerService.HintSize="548.8,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">"Skipped: " + intQICounterSkipped.ToString() + (intQICounterSkipped == 0 | intQICounterSkipped &gt; 1 ? " items" : " item")</CSharpValue>
@@ -731,7 +731,7 @@ Config["DateRangeToCheckQueue"].ToString() + " days ago"</CSharpValue>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message - 113" sap:VirtualizedContainerService.HintSize="548.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+    <ui:LogMessage DisplayName="Log Message - 114" sap:VirtualizedContainerService.HintSize="548.8,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">"Stop - Queue Add Items"</CSharpValue>
