@@ -549,7 +549,7 @@ new List&lt;string&gt;{
         </Assign.Value>
       </Assign>
     </Sequence>
-    <If sap2010:Annotation.AnnotationText="Send any Email with report?" DisplayName="If - Email &amp; Queue &amp; Status" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="If_29">
+    <If sap2010:Annotation.AnnotationText="Send any Email with report?" DisplayName="If - Email &amp; Queue &amp; Status" sap:VirtualizedContainerService.HintSize="417.6,515.2" sap2010:WorkflowViewState.IdRef="If_29">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_493">!strEmailTO_Report.Equals("null") &amp;&amp; ieQueueItems.Count() &lt;= 0 &amp;&amp; !boolExcelInputEmptyStatus</CSharpValue>
@@ -569,7 +569,7 @@ new List&lt;string&gt;{
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch sap2010:Annotation.AnnotationText="Try to send E-mail to business." DisplayName="Try Catch - Send Email - Business" sap:VirtualizedContainerService.HintSize="382.4,92" sap2010:WorkflowViewState.IdRef="TryCatch_21">
+          <TryCatch sap2010:Annotation.AnnotationText="Try to send E-mail to business." DisplayName="Try Catch - Send Email - Business" sap:VirtualizedContainerService.HintSize="417.6,540.8" sap2010:WorkflowViewState.IdRef="TryCatch_21">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -580,7 +580,9 @@ new List&lt;string&gt;{
             <TryCatch.Try>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Workflows\\Outlook\\OutlookSendEmail.xaml - Business" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="Workflows\\Outlook\\OutlookSendEmail.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="intSMTP_1_Exchange_2_Outlook_3">2</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="intSMTP_1_Exchange_2_Outlook_3">
+                    <Literal x:TypeArguments="x:Int32" Value="2" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailTO">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_472">strEmailTO_Report</CSharpValue>
                   </InArgument>
@@ -599,21 +601,27 @@ new List&lt;string&gt;{
                   <InArgument x:TypeArguments="scg:List(x:String)" x:Key="listAttachmentList">
                     <CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_475">listEmailAttachment_Report</CSharpValue>
                   </InArgument>
-                  <InArgument x:TypeArguments="x:Boolean" x:Key="boolIsBodyHTML">True</InArgument>
+                  <InArgument x:TypeArguments="x:Boolean" x:Key="boolIsBodyHTML">
+                    <Literal x:TypeArguments="x:Boolean" Value="True" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailCredName_12">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_476">Config["OutlookCredName"].ToString()</CSharpValue>
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailCredFolder_12">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_477">Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
                   </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="intEmailPort_1">587</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="intEmailPort_1">
+                    <Literal x:TypeArguments="x:Int32" Value="587" />
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailDomain_2">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_478">Config["OutlookDomain"].ToString()</CSharpValue>
                   </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailServer_12">
                     <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_479">Config["OutlookServer"].ToString()</CSharpValue>
                   </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="strEmailAccount_3">piotr.gajewskirpa@gmail.com</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="strEmailAccount_3">
+                    <Literal x:TypeArguments="x:String">piotr.gajewskirpa@gmail.com</Literal>
+                  </InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="strEmailDisplayName_12">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
@@ -626,7 +634,15 @@ new List&lt;string&gt;{
                   <InArgument x:TypeArguments="x:Int32" x:Key="intGetCredTOms">
                     <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_481">Int32.Parse(jsonConfig["TOms"]["Medium"].ToString())</CSharpValue>
                   </InArgument>
-                  <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsDelAfterSend">00:00:03</InArgument>
+                  <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsDelAfterSend">
+                    <Literal x:TypeArguments="x:TimeSpan" Value="00:00:03" />
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="intSendEmailRSNR">
+                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_500">Int32.Parse(jsonConfig["RS"]["OutlookSendEmail"]["NR"].ToString())</CSharpValue>
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:TimeSpan" x:Key="tsSendEmailRSTS">
+                    <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_501">TimeSpan.FromSeconds(Int32.Parse(jsonConfig["RS"]["OutlookSendEmail"]["TS"].ToString()))</CSharpValue>
+                  </InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
             </TryCatch.Try>
@@ -674,7 +690,7 @@ new List&lt;string&gt;{
           <ui:LogMessage DisplayName="Log Message - 137" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
-                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_496" xml:space="preserve">"No business report sent: " +
+                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_499" xml:space="preserve">"Not sending report: " +
 (strEmailTO_Report.Equals("null") ? "No E-mail address for report provided" : 
 (ieQueueItems.Count() &gt; 0 ? "Queue is not empty" : 
 (boolExcelInputEmptyStatus ? "Not all statuses have been completed" : "[No valid reason - check Robot logic]")))</CSharpValue>
