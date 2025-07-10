@@ -2,8 +2,16 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Optional string value. Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueName" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Optional string value. Allows the Orchestrator folder name where the queue and all other assets are created to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueFolder" Type="InArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then Queue is populated with new QI,&#xA;False - then Queue populating is skipped." Name="in_PopulateQueue" Type="InArgument(x:Boolean)" />
-    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then production settings will be used, &#xA;False - then test settings will be used." Name="in_EnvironmentProd" Type="InArgument(x:Boolean)" />
+    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then Queue is populated with new QI,&#xA;False - then Queue populating is skipped." Name="in_PopulateQueue" Type="InArgument(x:Boolean)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="Required boolean value. If value is set to:&#xA;True (default) - then production settings will be used, &#xA;False - then test settings will be used." Name="in_EnvironmentProd" Type="InArgument(x:Boolean)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
   <sap:VirtualizedContainerService.HintSize>680.8,1121.6</sap:VirtualizedContainerService.HintSize>
@@ -122,7 +130,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="[Process_Name]&#xA;[Process description]&#xA;[Author]&#xA;&#xA;To modify:&#xA;- provide process: name, description, author here and in project.json&#xA;- change files names: Data\Config_Process_Name.xlsx, Tests\TS_Process_Name.xlsx to given Process_Name&#xA;- edit Config values and move file to another directory if needed&#xA;- add assets to Orchestrator if needed&#xA;- add Queue to Orchestrator&#xA;- update packages if needed&#xA;- re-add test data Excel file, to TC workflows if needed&#xA;- adjust 3 variables in 4 Workflows (_Sandbox, FirstRun, TC_Process, TC_SubWorkflowName\Init Configs):&#xA;Assign - in_OrchestratorQueueFolder&#xA;Try Catch - Get Asset - strConfigFilePath\Get Asset - strConfigFilePath&#xA;Try Catch - Get Asset - strConfigFilePath\Assign - strConfigFilePath&#xA;- make sure Orchestrator folder name used in above 4 Workflows in: Assign - in_OrchestratorQueueFolder, equals the one used in Config-Settings_Prod and Config-Settings_Test&#xA;- remove unused imports&#xA;- run analyzer&#xA;- run parse XAML&#xA;- check Project Settings&#xA;- open each file &amp; Workflow for error check&#xA;- remove unnecessary Then-Else sequences&#xA;- change Main Workflow properties name to Process_Name&#xA;- remove unused entries in Config&#xA;- remove unused Workflows" DisplayName="Process_Name" sap:VirtualizedContainerService.HintSize="873.6,588.8" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID0}" sap2010:Annotation.AnnotationText="[Process_Name]&#xA;[Process description]&#xA;[Author]&#xA;&#xA;To modify:&#xA;- provide process: name, description, author here and in project.json&#xA;- change files names: Data\Config_Process_Name.xlsx, Tests\TS_Process_Name.xlsx to given Process_Name&#xA;- edit Config values and move file to another directory if needed&#xA;- add assets to Orchestrator if needed&#xA;- add Queue to Orchestrator&#xA;- update packages if needed&#xA;- re-add test data Excel file, to TC workflows if needed&#xA;- adjust 3 variables in 4 Workflows (_Sandbox, FirstRun, TC_Process, TC_SubWorkflowName\Init Configs):&#xA;Assign - in_OrchestratorQueueFolder&#xA;Try Catch - Get Asset - strConfigFilePath\Get Asset - strConfigFilePath&#xA;Try Catch - Get Asset - strConfigFilePath\Assign - strConfigFilePath&#xA;- make sure Orchestrator folder name used in above 4 Workflows in: Assign - in_OrchestratorQueueFolder, equals the one used in Config-Settings_Prod and Config-Settings_Test&#xA;- remove unused imports&#xA;- run analyzer&#xA;- run parse XAML&#xA;- check Project Settings&#xA;- open each file &amp; Workflow for error check&#xA;- remove unnecessary Then-Else sequences&#xA;- change Main Workflow properties name to Process_Name&#xA;- remove unused entries in Config&#xA;- remove unused Workflows" DisplayName="Process_Name" sap:VirtualizedContainerService.HintSize="722.4000000000001,588.8" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

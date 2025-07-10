@@ -36,7 +36,7 @@
       "Tooltip": "Required boolean value. If value is set to:\nTrue (default) - then Queue is populated with new QI,\nFalse - then Queue populating is skipped.",
       "Placeholder": "True",
       "Widget": null,
-      "IsRequired": false,
+      "IsRequired": true,
       "IsPrincipal": true,
       "ArgumentType": 0,
       "DataSourceItems": null
@@ -48,7 +48,7 @@
       "Tooltip": "Required boolean value. If value is set to:\nTrue (default) - then production settings will be used, \nFalse - then test settings will be used.",
       "Placeholder": "True",
       "Widget": null,
-      "IsRequired": false,
+      "IsRequired": true,
       "IsPrincipal": true,
       "ArgumentType": 0,
       "DataSourceItems": null
