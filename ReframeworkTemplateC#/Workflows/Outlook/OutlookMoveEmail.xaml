@@ -134,7 +134,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Move processed E-mail to proper Outlook folder.&#xA;smtp.office365.com" DisplayName="OutlookMoveEmail" sap:VirtualizedContainerService.HintSize="719.2,1344" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Move processed E-mail to proper Outlook folder.&#xA;smtp.office365.com" DisplayName="OutlookMoveEmail" sap:VirtualizedContainerService.HintSize="716.4000000000001,1356.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strLogin" />
       <Variable x:TypeArguments="ss:SecureString" Name="sstrPass" />
@@ -205,7 +205,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:RetryScope sap2010:Annotation.AnnotationText="Try to get E-mails from given folder." DisplayName="Retry Scope - Switch - intSMTP_1_Exchange_2_Outlook_3 - Get" sap:VirtualizedContainerService.HintSize="440,88" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+    <ui:RetryScope sap2010:Annotation.AnnotationText="Try to get E-mails from given folder." DisplayName="Retry Scope - Switch - intSMTP_1_Exchange_2_Outlook_3 - Get" sap:VirtualizedContainerService.HintSize="440,100.8" sap2010:WorkflowViewState.IdRef="RetryScope_2">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use." DisplayName="Switch - intSMTP_1_Exchange_2_Outlook_3 - Get" sap:VirtualizedContainerService.HintSize="419.2,819.2" sap2010:WorkflowViewState.IdRef="Switch`1_1">
@@ -1667,14 +1667,14 @@
     <ui:LogMessage DisplayName="Log Message - 94" sap:VirtualizedContainerService.HintSize="440,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_268" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_Outlook_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_Outlook_3 == 2 ? "Exchange" : "Outlook Application") + 
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_301" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_Outlook_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_Outlook_3 == 2 ? "Exchange" : "Outlook Application") + 
 (boolGetEmailsUnread ? ", Only unread" : ", All") + 
 " E-mails [" + 
 ((arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0 &amp;&amp; !string.IsNullOrEmpty(strEmailsFilterToGet)) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
 	(arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
 	(!string.IsNullOrEmpty(strEmailsFilterToGet)) ? "Filter: " + strEmailsFilterToGet : "No filter or ID") + 
 "] found in: " +
-strEmailFolderFrom + ": " + listEmailsFound.Count.ToString()</CSharpValue>
+strEmailFolderFrom + ": " + listEmailsFound.Count.ToString() + ", Limit set to: " + intGetEmailsTop.ToString()</CSharpValue>
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
