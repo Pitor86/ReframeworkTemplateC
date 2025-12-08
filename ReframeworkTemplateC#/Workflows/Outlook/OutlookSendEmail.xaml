@@ -1,0 +1,2233 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" this:SendEmail.intSMTP_1_Exchange_2_Outlook_3="2" this:SendEmail.strEmailTO="piotr.gajewskirpa@gmail.com" this:SendEmail.strEmailSubject="Test subject" this:SendEmail.strEmailBody="Hello,&lt;br&gt;&lt;br&gt;this is test E-mail.&lt;br&gt;&lt;br&gt;Robot" this:SendEmail.boolIsBodyHTML="True" this:SendEmail.strEmailCredName_12="Robot1_OutlookCredentials" this:SendEmail.strEmailCredFolder_12="Default" this:SendEmail.intEmailPort_1="587" this:SendEmail.strEmailDomain_2="domain_name" this:SendEmail.strEmailServer_12="https://outlook.domain_name.pl/EWS/Exchange.asmx" this:SendEmail.strEmailAccount_3="piotr.gajewskirpa@gmail.com" this:SendEmail.boolSaveCopyInSentItems_2="False" this:SendEmail.intSendEmailTOms="16000" this:SendEmail.intGetCredTOms="8000" this:SendEmail.tsDelAfterSend="00:00:03" this:SendEmail.intSendEmailRSNR="2" this:SendEmail.tsSendEmailRSTS="00:00:10" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="intSMTP_1_Exchange_2_Outlook_3" Type="InArgument(x:Int32)" />
+    <x:Property Name="strEmailTO" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailCC" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailBody" Type="InArgument(x:String)" />
+    <x:Property Name="strAttachmentPath" Type="InArgument(x:String)" />
+    <x:Property Name="listAttachmentList" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="boolIsBodyHTML" Type="InArgument(x:Boolean)" />
+    <x:Property Name="strEmailCredName_12" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailCredFolder_12" Type="InArgument(x:String)" />
+    <x:Property Name="intEmailPort_1" Type="InArgument(x:Int32)" />
+    <x:Property Name="strEmailDomain_2" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailServer_12" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailAccount_3" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailDisplayName_12" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailSendOnBehalf_123" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="If set to true, strEmailSendOnBehalf_123 must be provided." Name="boolSaveCopyInSentItems_2" Type="InArgument(x:Boolean)" />
+    <x:Property Name="intSendEmailTOms" Type="InArgument(x:Int32)" />
+    <x:Property Name="intGetCredTOms" Type="InArgument(x:Int32)" />
+    <x:Property Name="tsDelAfterSend" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="intSendEmailRSNR" Type="InArgument(x:Int32)" />
+    <x:Property Name="tsSendEmailRSTS" Type="InArgument(x:TimeSpan)" />
+  </x:Members>
+  <this:SendEmail.strEmailCC>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:SendEmail.strEmailCC>
+  <this:SendEmail.strAttachmentPath>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:SendEmail.strAttachmentPath>
+  <this:SendEmail.listAttachmentList>
+    <InArgument x:TypeArguments="scg:List(x:String)">
+      <CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">null</CSharpValue>
+    </InArgument>
+  </this:SendEmail.listAttachmentList>
+  <this:SendEmail.strEmailDisplayName_12>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:SendEmail.strEmailDisplayName_12>
+  <this:SendEmail.strEmailSendOnBehalf_123>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:SendEmail.strEmailSendOnBehalf_123>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>674.4,1098.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Send E-mail with given details.&#xA;smtp.office365.com" DisplayName="OutlookSendEmail" sap:VirtualizedContainerService.HintSize="716.4000000000001,968.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strLogin" />
+      <Variable x:TypeArguments="ss:SecureString" Name="sstrPass" />
+      <Variable x:TypeArguments="x:Int32" Name="intNoAttach_0_Path_1_List_2" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 99" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_222">"Start - Outlook Send Email"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <If sap2010:Annotation.AnnotationText="Read E-mail credentials?" DisplayName="If - strEmailCredName_12 != &quot;&quot;" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="If_22">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_568">strEmailCredName_12 != ""</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:GetRobotCredential CacheStrategy="None" DisplayName="Get Credential - strEmailCredName_12" sap:VirtualizedContainerService.HintSize="416,143.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3">
+          <ui:GetRobotCredential.AssetName>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_569">strEmailCredName_12</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.AssetName>
+          <ui:GetRobotCredential.FolderPath>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_571">strEmailCredFolder_12</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.FolderPath>
+          <ui:GetRobotCredential.Password>
+            <OutArgument x:TypeArguments="ss:SecureString">
+              <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">sstrPass</CSharpReference>
+            </OutArgument>
+          </ui:GetRobotCredential.Password>
+          <ui:GetRobotCredential.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32">
+              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_570">intGetCredTOms</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.TimeoutMS>
+          <ui:GetRobotCredential.Username>
+            <OutArgument x:TypeArguments="x:String">
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">strLogin</CSharpReference>
+            </OutArgument>
+          </ui:GetRobotCredential.Username>
+        </ui:GetRobotCredential>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_28">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <Sequence sap2010:Annotation.AnnotationText="Prepare variables." DisplayName="Set Vars" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="Sequence_27">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign - strEmailTO" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">strEmailTO</CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_572">strEmailTO.Replace(" ", "").Replace(",", ";").Replace(Environment.NewLine, "").TrimEnd(';')</CSharpValue>
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign DisplayName="Assign - strEmailCC" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">strEmailCC</CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_573">!string.IsNullOrEmpty(strEmailCC) ? strEmailCC.Replace(" ", "").Replace(",", ";").Replace(Environment.NewLine, "").TrimEnd(';') : strEmailCC</CSharpValue>
+          </InArgument>
+        </Assign.Value>
+      </Assign>
+      <If sap2010:Annotation.AnnotationText="Is strAttachmentPath and listAttachmentList empty?" DisplayName="If - No Attachments" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="If_23">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_574">string.IsNullOrEmpty(strAttachmentPath) &amp;&amp; (listAttachmentList == null || (listAttachmentList != null &amp;&amp; listAttachmentList.Count == 0))</CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign DisplayName="Assign - intNoAttach_0_Path_1_List_2 - 0" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">
+                <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">intNoAttach_0_Path_1_List_2</CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="433.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="Is strAttachmentPath provided?" DisplayName="If - strAttachmentPath" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="If_24">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_575">!string.IsNullOrEmpty(strAttachmentPath)</CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign DisplayName="Assign - intNoAttach_0_Path_1_List_2 - 1" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">
+                <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">intNoAttach_0_Path_1_List_2</CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">1</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="433.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="Is listAttachmentList provided?" DisplayName="If - listAttachmentList" sap:VirtualizedContainerService.HintSize="433.6,100.8" sap2010:WorkflowViewState.IdRef="If_25">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_576">listAttachmentList != null &amp;&amp; listAttachmentList.Count &gt; 0</CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign DisplayName="Assign - intNoAttach_0_Path_1_List_2 - 2" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">
+                <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">intNoAttach_0_Path_1_List_2</CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">2</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="433.6,89.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <If sap2010:Annotation.AnnotationText="Is strAttachmentPath and listAttachmentList providd?" DisplayName="If - strAttachmentPath And listAttachmentList" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="If_26">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_577">!string.IsNullOrEmpty(strAttachmentPath) &amp;&amp; (listAttachmentList != null &amp;&amp; listAttachmentList.Count &gt; 0)</CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Throw DisplayName="Throw - Email Attachments Overflow" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Throw_4">
+            <InArgument x:TypeArguments="s:Exception">
+              <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_578">new BusinessRuleException("Too many attachment sources. Please provide: strAttachmentPath OR listAttachmentList."){Data = {{"ExType", "BE"}}}</CSharpValue>
+            </InArgument>
+          </Throw>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_32">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+    </Sequence>
+    <ui:LogMessage DisplayName="Log Message - 100" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_579" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_Outlook_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_Outlook_3 == 2 ? "Exchange" : "Outlook Application") + 
+", Attachments: " + (intNoAttach_0_Path_1_List_2 == 0 ? "0" : intNoAttach_0_Path_1_List_2 == 1 ? "1" : listAttachmentList.Count.ToString()) + 
+", E-mail sent to: " + (string.IsNullOrEmpty(strEmailCC) ? strEmailTO : strEmailTO + ", CC: " + strEmailCC)</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <ui:RetryScope sap2010:Annotation.AnnotationText="Try to send E-mail to given recipients." DisplayName="Retry Scope - Switch - intSMTP_1_Exchange_2_OutlookApp_3" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use." DisplayName="Switch - intSMTP_1_Exchange_2_OutlookApp_3" sap:VirtualizedContainerService.HintSize="340.8,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+            <Switch.Default>
+              <Throw DisplayName="Throw - Invalid Option" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_5">
+                <InArgument x:TypeArguments="s:Exception">
+                  <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_855">new BusinessRuleException("Invalid option selected. Please choose between: 1, 2 or 3."){Data = {{"ExType", "BE"}}}</CSharpValue>
+                </InArgument>
+              </Throw>
+            </Switch.Default>
+            <Switch.Expression>
+              <InArgument x:TypeArguments="x:Int32">
+                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_580">intSMTP_1_Exchange_2_Outlook_3</CSharpValue>
+              </InArgument>
+            </Switch.Expression>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Switch x:TypeArguments="x:Int32" x:Key="1" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - SMTP" sap:VirtualizedContainerService.HintSize="334.4,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+              <Switch.Default>
+                <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </Switch.Default>
+              <Switch.Expression>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_581">intNoAttach_0_Path_1_List_2</CSharpValue>
+                </InArgument>
+              </Switch.Expression>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If x:Key="0" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - SMTP - 0" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_27">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_582">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - HTML - 0" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_13" IgnoreCRL="False" IsBodyHtml="True" SecureConnection="Auto">
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_592">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_590">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_583">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_588">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_587">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_586">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_584">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_585">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_591">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_593">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_589">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - Not HTML - 0" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_14" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto">
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_603">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_601">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_594">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_599">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_598">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_597">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_595">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_596">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_602">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_604">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_600">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Else>
+              </If>
+              <If x:Key="1" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - SMTP - 1" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_28">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_605">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - HTML - 1" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_15" IgnoreCRL="False" IsBodyHtml="True" SecureConnection="Auto">
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_615">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_613">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_606">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_617">strAttachmentPath</CSharpValue>
+                        </InArgument>
+                      </scg:List>
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_611">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_610">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_609">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_607">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_608">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_614">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_616">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_612">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - Not HTML - 1" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_16" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto">
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_627">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_625">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_618">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_629">strAttachmentPath</CSharpValue>
+                        </InArgument>
+                      </scg:List>
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_623">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_622">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_621">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_619">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_620">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_626">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_628">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_624">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Else>
+              </If>
+              <If x:Key="2" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - SMTP - 2" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_29">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_630">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - HTML - 2" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_17" IgnoreCRL="False" IsBodyHtml="True" SecureConnection="Auto">
+                    <ui:SendMail.AttachmentsCollection>
+                      <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                        <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_642">listAttachmentList</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.AttachmentsCollection>
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_640">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_638">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_631">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_636">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_635">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_634">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_632">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_633">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_639">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_641">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_637">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message - Not HTML - 2" EnableSSL="True" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendMail_18" IgnoreCRL="False" IsBodyHtml="False" SecureConnection="Auto">
+                    <ui:SendMail.AttachmentsCollection>
+                      <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                        <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_654">listAttachmentList</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.AttachmentsCollection>
+                    <ui:SendMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_652">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Body>
+                    <ui:SendMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_650">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Cc>
+                    <ui:SendMail.Email>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_643">strLogin</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Email>
+                    <ui:SendMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendMail.Files>
+                    <ui:SendMail.From>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_648">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.From>
+                    <ui:SendMail.Name>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_647">strEmailDisplayName_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Name>
+                    <ui:SendMail.Port>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_646">intEmailPort_1</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Port>
+                    <ui:SendMail.SecurePassword>
+                      <InArgument x:TypeArguments="ss:SecureString">
+                        <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_644">sstrPass</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.SecurePassword>
+                    <ui:SendMail.Server>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_645">strEmailServer_12</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Server>
+                    <ui:SendMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_651">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.Subject>
+                    <ui:SendMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_653">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.TimeoutMS>
+                    <ui:SendMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_649">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendMail.To>
+                  </ui:SendMail>
+                </If.Else>
+              </If>
+            </Switch>
+            <Switch x:TypeArguments="x:Int32" x:Key="2" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - Exchange" sap:VirtualizedContainerService.HintSize="334.4,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_7">
+              <Switch.Default>
+                <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </Switch.Default>
+              <Switch.Expression>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_655">intNoAttach_0_Path_1_List_2</CSharpValue>
+                </InArgument>
+              </Switch.Expression>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If x:Key="0" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - Exchange - 0" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_30">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_656">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - boolIsBodyHTML - Exchange - 0" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_36">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_657">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy HTML - 0" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_25" IsBodyHtml="True" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_661">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_659">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_667">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_663">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_662">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_666">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_664">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_660">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_668">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_658">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_665">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - HTML - 0" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_26" IsBodyHtml="True" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_672">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_670">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_678">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_674">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_673">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_677">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_675">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_671">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_679">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_669">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_676">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Then>
+                <If.Else>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - not boolIsBodyHTML - Exchange - 0" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_37">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_680">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy Not HTML - 0" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_27" IsBodyHtml="False" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_684">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_682">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_690">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_686">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_685">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_689">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_687">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_683">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_691">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_681">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_688">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Not HTML - 0" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_28" IsBodyHtml="False" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_695">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_693">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_701">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_697">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_696">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_700">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_698">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_694">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_702">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_692">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_699">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+              <If x:Key="1" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - Exchange - 1" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_31">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_703">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - boolIsBodyHTML - Exchange - 1" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_38">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_704">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy HTML - 1" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_29" IsBodyHtml="True" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_708">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_706">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_715">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.Files>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_711">strAttachmentPath</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Files>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_710">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_709">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_714">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_712">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_707">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_716">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_705">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_713">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - HTML - 1" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_30" IsBodyHtml="True" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_720">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_718">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_727">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.Files>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_723">strAttachmentPath</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Files>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_722">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_721">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_726">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_724">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_719">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_728">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_717">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_725">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Then>
+                <If.Else>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - not boolIsBodyHTML - Exchange - 1" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_39">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_729">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy Not HTML - 1" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_31" IsBodyHtml="False" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_733">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_731">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_740">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.Files>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_736">strAttachmentPath</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Files>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_735">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_734">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_739">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_737">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_732">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_741">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_730">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_738">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Not HTML - 1" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_32" IsBodyHtml="False" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_745">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_743">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_752">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.Files>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_748">strAttachmentPath</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Files>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_747">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_746">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_751">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_749">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_744">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_753">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_742">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_750">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+              <If x:Key="2" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - Exchange - 2" sap:VirtualizedContainerService.HintSize="416,56" sap2010:WorkflowViewState.IdRef="If_32">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_754">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - boolIsBodyHTML - Exchange - 2" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_40">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_755">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy HTML - 2" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_33" IsBodyHtml="True" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.AttachmentsCollection>
+                            <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                              <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_762">listAttachmentList</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.AttachmentsCollection>
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_759">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_757">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_766">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_761">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_760">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_765">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_763">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_758">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_767">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_756">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_764">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416.8,229.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - HTML - 2" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="383.2,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_34" IsBodyHtml="True" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.AttachmentsCollection>
+                            <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                              <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_774">listAttachmentList</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.AttachmentsCollection>
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_771">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_769">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_778">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_773">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_772">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_777">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_775">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_770">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_779">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_768">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_776">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Then>
+                <If.Else>
+                  <If sap2010:Annotation.AnnotationText="Save an E-mail copy?" DisplayName="If - boolSaveCopyInSentItems_2 - not boolIsBodyHTML - Exchange - 2" sap:VirtualizedContainerService.HintSize="332.8,56" sap2010:WorkflowViewState.IdRef="If_41">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_780">boolSaveCopyInSentItems_2</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Save Copy Not HTML - 2" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_35" IsBodyHtml="False" IsDraft="False" SaveCopy="True">
+                          <ui:SendExchangeMail.AttachmentsCollection>
+                            <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                              <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_787">listAttachmentList</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.AttachmentsCollection>
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_784">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_782">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_791">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_786">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_785">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_790">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_788">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_783">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_792">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_781">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_789">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="419.2,229.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:SendExchangeMail ApplicationId="{x:Null}" Bcc="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Send Exchange Mail Message - Not HTML - 2" ExchangeVersion="Exchange2007_SP1" sap:VirtualizedContainerService.HintSize="385.6,169.6" sap2010:WorkflowViewState.IdRef="SendExchangeMail_36" IsBodyHtml="False" IsDraft="False" SaveCopy="False">
+                          <ui:SendExchangeMail.AttachmentsCollection>
+                            <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                              <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_799">listAttachmentList</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.AttachmentsCollection>
+                          <ui:SendExchangeMail.Body>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_796">strEmailBody</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Body>
+                          <ui:SendExchangeMail.Cc>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_794">strEmailCC</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Cc>
+                          <ui:SendExchangeMail.Domain>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_803">strEmailDomain_2</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Domain>
+                          <ui:SendExchangeMail.From>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_798">strEmailSendOnBehalf_123</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.From>
+                          <ui:SendExchangeMail.Name>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_797">strEmailDisplayName_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Name>
+                          <ui:SendExchangeMail.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_802">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.SecurePassword>
+                          <ui:SendExchangeMail.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_800">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Server>
+                          <ui:SendExchangeMail.Subject>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_795">strEmailSubject</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.Subject>
+                          <ui:SendExchangeMail.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_804">intSendEmailTOms</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.TimeoutMS>
+                          <ui:SendExchangeMail.To>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_793">strEmailTO</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.To>
+                          <ui:SendExchangeMail.User>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_801">strLogin</CSharpValue>
+                            </InArgument>
+                          </ui:SendExchangeMail.User>
+                        </ui:SendExchangeMail>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </Switch>
+            <Switch x:TypeArguments="x:Int32" x:Key="3" sap2010:Annotation.AnnotationText="Choose number of attachments." DisplayName="Switch&lt;Int32&gt; - intNoAttach_0_Path_1_List_2 - OutlookApp" sap:VirtualizedContainerService.HintSize="334.4,68.8" sap2010:WorkflowViewState.IdRef="Switch`1_8">
+              <Switch.Expression>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_805">intNoAttach_0_Path_1_List_2</CSharpValue>
+                </InArgument>
+              </Switch.Expression>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If x:Key="0" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - OutlookApp - 0" sap:VirtualizedContainerService.HintSize="200,56" sap2010:WorkflowViewState.IdRef="If_33">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_806">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - HTML - 0" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_13" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_807">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_812">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_810">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_808">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_811">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_813">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_809">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - Not HTML - 0" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_14" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_814">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_819">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_817">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_815">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_818">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_820">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_816">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Else>
+              </If>
+              <If x:Key="1" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - OutlookApp - 1" sap:VirtualizedContainerService.HintSize="200,56" sap2010:WorkflowViewState.IdRef="If_34">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_821">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - HTML - 1" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_15" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_822">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_827">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_825">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_829">strAttachmentPath</CSharpValue>
+                        </InArgument>
+                      </scg:List>
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_823">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_826">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_828">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_824">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - Not HTML - 1" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_16" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_830">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_835">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_833">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_837">strAttachmentPath</CSharpValue>
+                        </InArgument>
+                      </scg:List>
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_831">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_834">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_836">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_832">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Else>
+              </If>
+              <If x:Key="2" sap2010:Annotation.AnnotationText="Is E-mail Body in HTML?" DisplayName="If - boolIsBodyHTML - OutlookApp - 2" sap:VirtualizedContainerService.HintSize="200,56" sap2010:WorkflowViewState.IdRef="If_35">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_838">boolIsBodyHTML</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - HTML - 2" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_17" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_839">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.AttachmentsCollection>
+                      <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                        <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_846">listAttachmentList</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.AttachmentsCollection>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_844">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_842">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_840">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_843">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_845">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_841">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Then>
+                <If.Else>
+                  <ui:SendOutlookMail Bcc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Outlook Mail Message - Not HTML - 2" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_18" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal">
+                    <ui:SendOutlookMail.Account>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_847">strEmailAccount_3</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Account>
+                    <ui:SendOutlookMail.AttachmentsCollection>
+                      <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+                        <CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_854">listAttachmentList</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.AttachmentsCollection>
+                    <ui:SendOutlookMail.Body>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_852">strEmailBody</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Body>
+                    <ui:SendOutlookMail.Cc>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_850">strEmailCC</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Cc>
+                    <ui:SendOutlookMail.Files>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                    </ui:SendOutlookMail.Files>
+                    <ui:SendOutlookMail.SentOnBehalfOfName>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_848">strEmailSendOnBehalf_123</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.SentOnBehalfOfName>
+                    <ui:SendOutlookMail.Subject>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_851">strEmailSubject</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.Subject>
+                    <ui:SendOutlookMail.TimeoutMS>
+                      <InArgument x:TypeArguments="x:Int32">
+                        <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_853">intSendEmailTOms</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.TimeoutMS>
+                    <ui:SendOutlookMail.To>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_849">strEmailTO</CSharpValue>
+                      </InArgument>
+                    </ui:SendOutlookMail.To>
+                  </ui:SendOutlookMail>
+                </If.Else>
+              </If>
+            </Switch>
+          </Switch>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <Delay DisplayName="Delay - tsDelAfterSend" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_2">
+      <InArgument x:TypeArguments="x:TimeSpan">
+        <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_856">tsDelAfterSend</CSharpValue>
+      </InArgument>
+    </Delay>
+    <ui:LogMessage DisplayName="Log Message - 101" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_223">"Stop - Outlook Send Email"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

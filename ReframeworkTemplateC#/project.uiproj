@@ -1,0 +1,6 @@
+{
+  "Name": "Reframework_Process_Name",
+  "ProjectType": "Process",
+  "Description": "Process description.",
+  "MainFile": "Main.xaml"
+}

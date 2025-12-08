@@ -1,0 +1,1906 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OutlookMoveEmail" this:OutlookMoveEmail.intSMTP_1_Exchange_2_Outlook_3="2" this:OutlookMoveEmail.strEmailFolderFrom="inbox" this:OutlookMoveEmail.strEmailFolderTo="inbox" this:OutlookMoveEmail.intGetEmailsTop="50" this:OutlookMoveEmail.boolGetEmailsUnread="True" this:OutlookMoveEmail.boolGetEmailsMarkRead="False" this:OutlookMoveEmail.strEmailCredName_12="Robot1_OutlookCredencials" this:OutlookMoveEmail.strEmailCredFolder_12="Default" this:OutlookMoveEmail.intEmailPort_1="587" this:OutlookMoveEmail.strEmailDomain_2="domain_name" this:OutlookMoveEmail.strEmailServer_12="https://outlook.domain_name.pl/EWS/Exchange.asmx" this:OutlookMoveEmail.strEmailAccount_13="piotr.gajewskirpa@gmail.com" this:OutlookMoveEmail.intGetCredTOms="8000" this:OutlookMoveEmail.intGetMailsTOms="16000" this:OutlookMoveEmail.intMoveMailsTOms="16000" this:OutlookMoveEmail.intGetMailsRSNR="2" this:OutlookMoveEmail.tsGetMailsRSTS="00:00:06" this:OutlookMoveEmail.tsDelAfterMove="00:00:03" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="intSMTP_1_Exchange_2_Outlook_3" Type="InArgument(x:Int32)" />
+    <x:Property Name="strEmailFolderFrom" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailFolderTo" Type="InArgument(x:String)" />
+    <x:Property Name="intGetEmailsTop" Type="InArgument(x:Int32)" />
+    <x:Property Name="arrEmailsIDToGet" Type="InArgument(s:String[])" />
+    <x:Property sap2010:Annotation.AnnotationText="Example filter:&#xA;&quot;Subject: &quot; + &quot;Temat wiadomosci&quot; + &quot; AND From: &quot; + &quot;noreply@test.pl&quot; + &quot; AND Received: &gt;= 6/13/2024&quot;" Name="strEmailsFilterToGet" Type="InArgument(x:String)" />
+    <x:Property Name="boolGetEmailsUnread" Type="InArgument(x:Boolean)" />
+    <x:Property Name="boolGetEmailsMarkRead" Type="InArgument(x:Boolean)" />
+    <x:Property Name="strEmailCredName_12" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailCredFolder_12" Type="InArgument(x:String)" />
+    <x:Property Name="intEmailPort_1" Type="InArgument(x:Int32)" />
+    <x:Property Name="strEmailDomain_2" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailServer_12" Type="InArgument(x:String)" />
+    <x:Property Name="strEmailAccount_13" Type="InArgument(x:String)" />
+    <x:Property Name="intGetCredTOms" Type="InArgument(x:Int32)" />
+    <x:Property Name="intGetMailsTOms" Type="InArgument(x:Int32)" />
+    <x:Property Name="intMoveMailsTOms" Type="InArgument(x:Int32)" />
+    <x:Property Name="intGetMailsRSNR" Type="InArgument(x:Int32)" />
+    <x:Property Name="tsGetMailsRSTS" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="tsDelAfterMove" Type="InArgument(x:TimeSpan)" />
+  </x:Members>
+  <this:OutlookMoveEmail.arrEmailsIDToGet>
+    <InArgument x:TypeArguments="s:String[]">
+      <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_98">null</CSharpValue>
+    </InArgument>
+  </this:OutlookMoveEmail.arrEmailsIDToGet>
+  <this:OutlookMoveEmail.strEmailsFilterToGet>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:OutlookMoveEmail.strEmailsFilterToGet>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>674.4,1500</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Move processed E-mail to proper Outlook folder.&#xA;smtp.office365.com" DisplayName="OutlookMoveEmail" sap:VirtualizedContainerService.HintSize="716.4000000000001,1319.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strLogin" />
+      <Variable x:TypeArguments="ss:SecureString" Name="sstrPass" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="listEmailsFound" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - 95" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"Start - Outlook Move Email"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <If sap2010:Annotation.AnnotationText="Read E-mail credentials?" DisplayName="If - strEmailCredName_12 != &quot;&quot;" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="If_29">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_302">strEmailCredName_12 != ""</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:GetRobotCredential CacheStrategy="None" DisplayName="Get Credential - strEmailCredName_12" sap:VirtualizedContainerService.HintSize="416,143.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3">
+          <ui:GetRobotCredential.AssetName>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_303">strEmailCredName_12</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.AssetName>
+          <ui:GetRobotCredential.FolderPath>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_305">strEmailCredFolder_12</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.FolderPath>
+          <ui:GetRobotCredential.Password>
+            <OutArgument x:TypeArguments="ss:SecureString">
+              <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">sstrPass</CSharpReference>
+            </OutArgument>
+          </ui:GetRobotCredential.Password>
+          <ui:GetRobotCredential.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32">
+              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_304">intGetCredTOms</CSharpValue>
+            </InArgument>
+          </ui:GetRobotCredential.TimeoutMS>
+          <ui:GetRobotCredential.Username>
+            <OutArgument x:TypeArguments="x:String">
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">strLogin</CSharpReference>
+            </OutArgument>
+          </ui:GetRobotCredential.Username>
+        </ui:GetRobotCredential>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:RetryScope sap2010:Annotation.AnnotationText="Try to get E-mails from given folder." DisplayName="Retry Scope - Switch - intSMTP_1_Exchange_2_Outlook_3 - Get" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="RetryScope_4">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use." DisplayName="Switch - intSMTP_1_Exchange_2_Outlook_3 - Get" sap:VirtualizedContainerService.HintSize="419.2,819.2" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+            <Switch.Default>
+              <Throw DisplayName="Throw - Invalid Option - Get" sap:VirtualizedContainerService.HintSize="417.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_9">
+                <InArgument x:TypeArguments="s:Exception">
+                  <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_468">new BusinessRuleException("Invalid option selected. Please choose between: 1, 2 or 3."){Data = {{"ExType", "BE"}}}</CSharpValue>
+                </InArgument>
+              </Throw>
+            </Switch.Default>
+            <Switch.Expression>
+              <InArgument x:TypeArguments="x:Int32">
+                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_306">intSMTP_1_Exchange_2_Outlook_3</CSharpValue>
+              </InArgument>
+            </Switch.Expression>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If x:Key="1" sap2010:Annotation.AnnotationText="Get only Unread E-mails?" DisplayName="If - boolGetEmailsUnread - No ID - SMTP" sap:VirtualizedContainerService.HintSize="417.6,301.6" sap2010:WorkflowViewState.IdRef="If_32">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_307">boolGetEmailsUnread</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,139.2" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - Unread - No ID - SMTP" sap:VirtualizedContainerService.HintSize="382.4,79.2" sap2010:WorkflowViewState.IdRef="If_35">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_308">boolGetEmailsMarkRead</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - listEmailsFound - TT - No ID" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_5" IgnoreCRL="False" MarkAsRead="True" OnlyUnreadMessages="True" OrderByDate="OldestFirst" SecureConnection="Auto">
+                          <ui:GetIMAPMailMessages.Email>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_309">strEmailAccount_13</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Email>
+                          <ui:GetIMAPMailMessages.FilterExpression>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_314">strEmailsFilterToGet</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.FilterExpression>
+                          <ui:GetIMAPMailMessages.MailFolder>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_313">strEmailFolderFrom</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.MailFolder>
+                          <ui:GetIMAPMailMessages.Messages>
+                            <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                              <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">listEmailsFound</CSharpReference>
+                            </OutArgument>
+                          </ui:GetIMAPMailMessages.Messages>
+                          <ui:GetIMAPMailMessages.Port>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_312">intEmailPort_1</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Port>
+                          <ui:GetIMAPMailMessages.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_310">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.SecurePassword>
+                          <ui:GetIMAPMailMessages.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_311">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Server>
+                          <ui:GetIMAPMailMessages.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_315">intGetMailsTOms</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.TimeoutMS>
+                          <ui:GetIMAPMailMessages.Top>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_316">intGetEmailsTop</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Top>
+                        </ui:GetIMAPMailMessages>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - listEmailsFound - TF - No ID" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_6" IgnoreCRL="False" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="OldestFirst" SecureConnection="Auto">
+                          <ui:GetIMAPMailMessages.Email>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_317">strEmailAccount_13</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Email>
+                          <ui:GetIMAPMailMessages.FilterExpression>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_322">strEmailsFilterToGet</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.FilterExpression>
+                          <ui:GetIMAPMailMessages.MailFolder>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_321">strEmailFolderFrom</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.MailFolder>
+                          <ui:GetIMAPMailMessages.Messages>
+                            <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                              <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">listEmailsFound</CSharpReference>
+                            </OutArgument>
+                          </ui:GetIMAPMailMessages.Messages>
+                          <ui:GetIMAPMailMessages.Port>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_320">intEmailPort_1</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Port>
+                          <ui:GetIMAPMailMessages.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_318">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.SecurePassword>
+                          <ui:GetIMAPMailMessages.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_319">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Server>
+                          <ui:GetIMAPMailMessages.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_323">intGetMailsTOms</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.TimeoutMS>
+                          <ui:GetIMAPMailMessages.Top>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_324">intGetEmailsTop</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Top>
+                        </ui:GetIMAPMailMessages>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - All - No ID - SMTP" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_36">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_325">boolGetEmailsMarkRead</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - listEmailsFound - FT - No ID" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_7" IgnoreCRL="False" MarkAsRead="True" OnlyUnreadMessages="False" OrderByDate="OldestFirst" SecureConnection="Auto">
+                          <ui:GetIMAPMailMessages.Email>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_326">strEmailAccount_13</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Email>
+                          <ui:GetIMAPMailMessages.FilterExpression>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_331">strEmailsFilterToGet</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.FilterExpression>
+                          <ui:GetIMAPMailMessages.MailFolder>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_330">strEmailFolderFrom</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.MailFolder>
+                          <ui:GetIMAPMailMessages.Messages>
+                            <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                              <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_38">listEmailsFound</CSharpReference>
+                            </OutArgument>
+                          </ui:GetIMAPMailMessages.Messages>
+                          <ui:GetIMAPMailMessages.Port>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_329">intEmailPort_1</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Port>
+                          <ui:GetIMAPMailMessages.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_327">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.SecurePassword>
+                          <ui:GetIMAPMailMessages.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_328">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Server>
+                          <ui:GetIMAPMailMessages.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_332">intGetMailsTOms</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.TimeoutMS>
+                          <ui:GetIMAPMailMessages.Top>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_333">intGetEmailsTop</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Top>
+                        </ui:GetIMAPMailMessages>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages - listEmailsFound - FF - No ID" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_8" IgnoreCRL="False" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst" SecureConnection="Auto">
+                          <ui:GetIMAPMailMessages.Email>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_334">strEmailAccount_13</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Email>
+                          <ui:GetIMAPMailMessages.FilterExpression>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_339">strEmailsFilterToGet</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.FilterExpression>
+                          <ui:GetIMAPMailMessages.MailFolder>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_338">strEmailFolderFrom</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.MailFolder>
+                          <ui:GetIMAPMailMessages.Messages>
+                            <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                              <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_39">listEmailsFound</CSharpReference>
+                            </OutArgument>
+                          </ui:GetIMAPMailMessages.Messages>
+                          <ui:GetIMAPMailMessages.Port>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_337">intEmailPort_1</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Port>
+                          <ui:GetIMAPMailMessages.SecurePassword>
+                            <InArgument x:TypeArguments="ss:SecureString">
+                              <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_335">sstrPass</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.SecurePassword>
+                          <ui:GetIMAPMailMessages.Server>
+                            <InArgument x:TypeArguments="x:String">
+                              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_336">strEmailServer_12</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Server>
+                          <ui:GetIMAPMailMessages.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_340">intGetMailsTOms</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.TimeoutMS>
+                          <ui:GetIMAPMailMessages.Top>
+                            <InArgument x:TypeArguments="x:Int32">
+                              <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_341">intGetEmailsTop</CSharpValue>
+                            </InArgument>
+                          </ui:GetIMAPMailMessages.Top>
+                        </ui:GetIMAPMailMessages>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+            <If x:Key="2" sap2010:Annotation.AnnotationText="No E-mail ID provided?" DisplayName="If - arrEmailsIDToGet is null - Exchange" sap:VirtualizedContainerService.HintSize="417.6,56" sap2010:WorkflowViewState.IdRef="If_33">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_342">arrEmailsIDToGet == null || arrEmailsIDToGet.Count() &lt;= 0</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Get only Unread E-mails?" DisplayName="If - boolGetEmailsUnread - No ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_37">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_343">boolGetEmailsUnread</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - Unread - No ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_41">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_344">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" FilterByMessageIds="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - TT - No ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_21" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="True" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_345">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_351">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_347">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_40">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_350">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_348">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_352">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_346">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_349">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" FilterByMessageIds="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - TF - No ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_22" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_353">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_359">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_355">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_41">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_358">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_356">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_360">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_354">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_357">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - All - No ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_42">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_361">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_65">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" FilterByMessageIds="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - FT - No ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_23" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="True" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_362">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_368">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_364">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_42">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_367">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_365">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_369">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_363">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_366">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" FilterByMessageIds="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - FF - No ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_24" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_370">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_376">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_372">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_43">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_375">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_373">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_377">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_371">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_374">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Get only Unread E-mails?" DisplayName="If - boolGetEmailsUnread - ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_38">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_378">boolGetEmailsUnread</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - Unread - ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_43">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_379">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - TT - ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_25" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="True" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_380">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_387">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_383">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterByMessageIds>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_382">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_386">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_384">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_388">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_381">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_385">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - TF - ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_26" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_389">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_396">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_392">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterByMessageIds>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_391">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_395">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_393">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_397">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_390">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_394">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_58">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - All - ID - Exchange" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_44">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_398">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - FT - ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_27" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="True" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_399">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_406">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_402">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterByMessageIds>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_401">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_405">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_403">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_407">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_400">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_404">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetExchangeMailMessages ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" AuthenticationMode="UserNameAndPassword" DisplayName="Get Exchange Mail Messages - listEmailsFound - FF - ID" ExchangeVersion="Exchange2010_SP1" GetAttachements="True" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetExchangeMailMessages_28" IsBodyHtml="False" MailFolder="Calendar" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetExchangeMailMessages.CustomFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_408">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.CustomFolder>
+                                <ui:GetExchangeMailMessages.Domain>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_415">strEmailDomain_2</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Domain>
+                                <ui:GetExchangeMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_411">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterByMessageIds>
+                                <ui:GetExchangeMailMessages.FilterExpression>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_410">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.FilterExpression>
+                                <ui:GetExchangeMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_47">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetExchangeMailMessages.Messages>
+                                <ui:GetExchangeMailMessages.SecurePassword>
+                                  <InArgument x:TypeArguments="ss:SecureString">
+                                    <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_414">sstrPass</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.SecurePassword>
+                                <ui:GetExchangeMailMessages.Server>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_412">strEmailServer_12</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Server>
+                                <ui:GetExchangeMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_416">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.TimeoutMS>
+                                <ui:GetExchangeMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_409">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.Top>
+                                <ui:GetExchangeMailMessages.User>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_413">strLogin</CSharpValue>
+                                  </InArgument>
+                                </ui:GetExchangeMailMessages.User>
+                              </ui:GetExchangeMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+            <If x:Key="3" sap2010:Annotation.AnnotationText="No E-mail ID provided?" DisplayName="If - arrEmailsIDToGet is null - OutlookApp" sap:VirtualizedContainerService.HintSize="417.6,56" sap2010:WorkflowViewState.IdRef="If_34">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_417">arrEmailsIDToGet == null || arrEmailsIDToGet.Count() &lt;= 0</CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Get only Unread E-mails?" DisplayName="If - boolGetEmailsUnread - No ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_39">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_418">boolGetEmailsUnread</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - Unread - No ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_45">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_419">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" DisplayName="Get Outlook Mail Messages - listEmailsFound - TT - No ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_9" MarkAsRead="True" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_421">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_422">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_420">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_48">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_423">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_424">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" DisplayName="Get Outlook Mail Messages - listEmailsFound - TF - No ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_10" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_426">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_427">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_425">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_49">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_428">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_429">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - All - No ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_46">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_430">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" DisplayName="Get Outlook Mail Messages - listEmailsFound - FT - No ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_11" MarkAsRead="True" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_432">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_433">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_431">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_434">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_435">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" DisplayName="Get Outlook Mail Messages - listEmailsFound - FF - No ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_12" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_437">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_438">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_436">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_439">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_440">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If sap2010:Annotation.AnnotationText="Get only Unread E-mails?" DisplayName="If - boolGetEmailsUnread - ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_40">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_441">boolGetEmailsUnread</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - Unread - ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_47">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_442">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages DisplayName="Get Outlook Mail Messages - listEmailsFound - TT - ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_13" MarkAsRead="True" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_444">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_445">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_446">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.FilterByMessageIds>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_443">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_447">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_448">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages DisplayName="Get Outlook Mail Messages - listEmailsFound - TF - ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_14" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_450">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_451">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_452">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.FilterByMessageIds>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_449">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_53">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_453">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_454">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,168" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If sap2010:Annotation.AnnotationText="Mark E-mails as read?" DisplayName="If - boolGetEmailsMarkRead - All - ID - OutlookApp" sap:VirtualizedContainerService.HintSize="353.6,79.2" sap2010:WorkflowViewState.IdRef="If_48">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_455">boolGetEmailsMarkRead</CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_77">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages DisplayName="Get Outlook Mail Messages - listEmailsFound - FT - ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_15" MarkAsRead="True" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_457">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_458">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_459">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.FilterByMessageIds>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_456">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_54">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_460">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_461">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,136.8" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:GetOutlookMailMessages DisplayName="Get Outlook Mail Messages - listEmailsFound - FF - ID" GetAttachements="False" sap:VirtualizedContainerService.HintSize="353.6,48" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_16" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst">
+                                <ui:GetOutlookMailMessages.Account>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_463">strEmailAccount_13</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Account>
+                                <ui:GetOutlookMailMessages.Filter>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_464">strEmailsFilterToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Filter>
+                                <ui:GetOutlookMailMessages.FilterByMessageIds>
+                                  <InArgument x:TypeArguments="s:String[]">
+                                    <CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_465">arrEmailsIDToGet</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.FilterByMessageIds>
+                                <ui:GetOutlookMailMessages.MailFolder>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_462">strEmailFolderFrom</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.MailFolder>
+                                <ui:GetOutlookMailMessages.Messages>
+                                  <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">
+                                    <CSharpReference x:TypeArguments="scg:List(snm:MailMessage)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">listEmailsFound</CSharpReference>
+                                  </OutArgument>
+                                </ui:GetOutlookMailMessages.Messages>
+                                <ui:GetOutlookMailMessages.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_466">intGetMailsTOms</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.TimeoutMS>
+                                <ui:GetOutlookMailMessages.Top>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_467">intGetEmailsTop</CSharpValue>
+                                  </InArgument>
+                                </ui:GetOutlookMailMessages.Top>
+                              </ui:GetOutlookMailMessages>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Switch>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+      <ui:RetryScope.NumberOfRetries>
+        <InArgument x:TypeArguments="x:Int32">
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_469">intGetMailsRSNR</CSharpValue>
+        </InArgument>
+      </ui:RetryScope.NumberOfRetries>
+      <ui:RetryScope.RetryInterval>
+        <InArgument x:TypeArguments="x:TimeSpan">
+          <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_470">tsGetMailsRSTS</CSharpValue>
+        </InArgument>
+      </ui:RetryScope.RetryInterval>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <ui:LogMessage DisplayName="Log Message - 96" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_471" xml:space="preserve">"Using method: " + (intSMTP_1_Exchange_2_Outlook_3 == 1 ? "SMTP" : intSMTP_1_Exchange_2_Outlook_3 == 2 ? "Exchange" : "Outlook Application") + 
+(boolGetEmailsUnread ? ", Only unread" : ", All") + 
+" E-mails [" + 
+((arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0 &amp;&amp; !string.IsNullOrEmpty(strEmailsFilterToGet)) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(!string.IsNullOrEmpty(strEmailsFilterToGet)) ? "Filter: " + strEmailsFilterToGet : "No filter or ID") + 
+"] found in: " +
+strEmailFolderFrom + ": " + listEmailsFound.Count.ToString() + ", Limit set to: " + intGetEmailsTop.ToString()</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <If sap2010:Annotation.AnnotationText="Found nothing or 0 E-mails with given ID?" DisplayName="If - Nothing Found" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="If_30">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_472">listEmailsFound == null || listEmailsFound.Count() == 0</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Throw DisplayName="Throw - Nothing Found" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Throw_7">
+          <InArgument x:TypeArguments="s:Exception">
+            <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_473" xml:space="preserve">new BusinessRuleException("No E-mails found using: " + 
+	((arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0 &amp;&amp; !string.IsNullOrEmpty(strEmailsFilterToGet)) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(!string.IsNullOrEmpty(strEmailsFilterToGet)) ? "Filter: " + strEmailsFilterToGet : "No filter or ID") + 
+	", in: " + strEmailFolderFrom + "."){Data = {{"ExType", "BE"}}}</CSharpValue>
+          </InArgument>
+        </Throw>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_43">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If sap2010:Annotation.AnnotationText="Found more than 1 E-mail with given ID?" DisplayName="If - Found More Than 1 E-mail" sap:VirtualizedContainerService.HintSize="449.6,88" sap2010:WorkflowViewState.IdRef="If_31">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_474">listEmailsFound.Count() &gt; 1</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Throw DisplayName="Throw - Many Matches" sap:VirtualizedContainerService.HintSize="416,90.4" sap2010:WorkflowViewState.IdRef="Throw_8">
+          <InArgument x:TypeArguments="s:Exception">
+            <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_475" xml:space="preserve">new BusinessRuleException("Found more than 1 E-mail using: " + 
+	((arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0 &amp;&amp; !string.IsNullOrEmpty(strEmailsFilterToGet)) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(arrEmailsIDToGet != null &amp;&amp; arrEmailsIDToGet.Count() &gt; 0) ? "ID: " + string.Join(", ", arrEmailsIDToGet) : 
+	(!string.IsNullOrEmpty(strEmailsFilterToGet)) ? "Filter: " + strEmailsFilterToGet : "No filter or ID") + 
+	", in: " + strEmailFolderFrom + "."){Data = {{"ExType", "BE"}}}</CSharpValue>
+          </InArgument>
+        </Throw>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89.6" sap2010:WorkflowViewState.IdRef="Sequence_44">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:RetryScope sap2010:Annotation.AnnotationText="Try to move E-mails to given folder." DisplayName="Retry Scope - Switch - intSMTP_1_Exchange_2_Outlook_3 - Move" sap:VirtualizedContainerService.HintSize="440,88" sap2010:WorkflowViewState.IdRef="RetryScope_5">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Choose which method to use." DisplayName="Switch - intSMTP_1_Exchange_2_Outlook_3 - Move" sap:VirtualizedContainerService.HintSize="398.4,669.6" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+            <Switch.Default>
+              <Throw DisplayName="Throw - Invalid Option - Move" sap:VirtualizedContainerService.HintSize="336.8,90.4" sap2010:WorkflowViewState.IdRef="Throw_10">
+                <InArgument x:TypeArguments="s:Exception">
+                  <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_494">new BusinessRuleException("Invalid option selected. Please choose between: 1, 2 or 3."){Data = {{"ExType", "BE"}}}</CSharpValue>
+                </InArgument>
+              </Throw>
+            </Switch.Default>
+            <Switch.Expression>
+              <InArgument x:TypeArguments="x:Int32">
+                <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_476">intSMTP_1_Exchange_2_Outlook_3</CSharpValue>
+              </InArgument>
+            </Switch.Expression>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MoveIMAPMailMessageToFolder ClientName="{x:Null}" ClientVersion="{x:Null}" Password="{x:Null}" UseOAuth="{x:Null}" x:Key="1" DisplayName="MoveIMAPMailMessageToFolder - strEmailFolderTo" EnableSSL="True" sap:VirtualizedContainerService.HintSize="336.8,88" sap2010:WorkflowViewState.IdRef="MoveIMAPMailMessageToFolder_2" IgnoreCRL="False" SecureConnection="Auto">
+              <ui:MoveIMAPMailMessageToFolder.Email>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_477">strEmailAccount_13</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.Email>
+              <ui:MoveIMAPMailMessageToFolder.FromFolder>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_483">strEmailFolderFrom</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.FromFolder>
+              <ui:MoveIMAPMailMessageToFolder.MailFolder>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_482">strEmailFolderTo</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.MailFolder>
+              <ui:MoveIMAPMailMessageToFolder.MailMessage>
+                <InArgument x:TypeArguments="snm:MailMessage">
+                  <CSharpValue x:TypeArguments="snm:MailMessage" sap2010:WorkflowViewState.IdRef="CSharpValue`1_481">listEmailsFound[0]</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.MailMessage>
+              <ui:MoveIMAPMailMessageToFolder.Port>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_480">intEmailPort_1</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.Port>
+              <ui:MoveIMAPMailMessageToFolder.SecurePassword>
+                <InArgument x:TypeArguments="ss:SecureString">
+                  <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_478">sstrPass</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.SecurePassword>
+              <ui:MoveIMAPMailMessageToFolder.Server>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_479">strEmailServer_12</CSharpValue>
+                </InArgument>
+              </ui:MoveIMAPMailMessageToFolder.Server>
+            </ui:MoveIMAPMailMessageToFolder>
+            <ui:MoveMessageToFolder ApplicationId="{x:Null}" DirectoryId="{x:Null}" EmailAutodiscover="{x:Null}" Password="{x:Null}" SharedMailbox="{x:Null}" x:Key="2" AuthenticationMode="UserNameAndPassword" DisplayName="MoveMessageToFolder - strEmailFolderTo" ExchangeVersion="Exchange2010_SP1" sap:VirtualizedContainerService.HintSize="336.8,88" sap2010:WorkflowViewState.IdRef="MoveMessageToFolder_3">
+              <ui:MoveMessageToFolder.Domain>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_489">strEmailDomain_2</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.Domain>
+              <ui:MoveMessageToFolder.MailFolder>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_485">strEmailFolderTo</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.MailFolder>
+              <ui:MoveMessageToFolder.MailMessage>
+                <InArgument x:TypeArguments="snm:MailMessage">
+                  <CSharpValue x:TypeArguments="snm:MailMessage" sap2010:WorkflowViewState.IdRef="CSharpValue`1_484">listEmailsFound[0]</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.MailMessage>
+              <ui:MoveMessageToFolder.SecurePassword>
+                <InArgument x:TypeArguments="ss:SecureString">
+                  <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_488">sstrPass</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.SecurePassword>
+              <ui:MoveMessageToFolder.Server>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_486">strEmailServer_12</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.Server>
+              <ui:MoveMessageToFolder.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32">
+                  <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_490">intMoveMailsTOms</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.TimeoutMS>
+              <ui:MoveMessageToFolder.User>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_487">strLogin</CSharpValue>
+                </InArgument>
+              </ui:MoveMessageToFolder.User>
+            </ui:MoveMessageToFolder>
+            <ui:MoveOutlookMessage x:Key="3" DisplayName="MoveOutlookMessage - strEmailFolderTo" sap:VirtualizedContainerService.HintSize="336.8,88" sap2010:WorkflowViewState.IdRef="MoveOutlookMessage_2">
+              <ui:MoveOutlookMessage.Account>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_492">strEmailAccount_13</CSharpValue>
+                </InArgument>
+              </ui:MoveOutlookMessage.Account>
+              <ui:MoveOutlookMessage.MailFolder>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_493">strEmailFolderTo</CSharpValue>
+                </InArgument>
+              </ui:MoveOutlookMessage.MailFolder>
+              <ui:MoveOutlookMessage.MailMessage>
+                <InArgument x:TypeArguments="snm:MailMessage">
+                  <CSharpValue x:TypeArguments="snm:MailMessage" sap2010:WorkflowViewState.IdRef="CSharpValue`1_491">listEmailsFound[0]</CSharpValue>
+                </InArgument>
+              </ui:MoveOutlookMessage.MailMessage>
+            </ui:MoveOutlookMessage>
+          </Switch>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+      <ui:RetryScope.NumberOfRetries>
+        <InArgument x:TypeArguments="x:Int32">
+          <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_495">intGetMailsRSNR</CSharpValue>
+        </InArgument>
+      </ui:RetryScope.NumberOfRetries>
+      <ui:RetryScope.RetryInterval>
+        <InArgument x:TypeArguments="x:TimeSpan">
+          <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_496">tsGetMailsRSTS</CSharpValue>
+        </InArgument>
+      </ui:RetryScope.RetryInterval>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <Delay DisplayName="Delay - tsDelAfterMove" sap:VirtualizedContainerService.HintSize="440,122.4" sap2010:WorkflowViewState.IdRef="Delay_2">
+      <InArgument x:TypeArguments="x:TimeSpan">
+        <CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_497">tsDelAfterMove</CSharpValue>
+      </InArgument>
+    </Delay>
+    <ui:LogMessage DisplayName="Log Message - 97" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_498">"E-mail moved from: " + strEmailFolderFrom + ", to: " + strEmailFolderTo</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message - 98" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Stop - Outlook Move Email"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

@@ -1,0 +1,77 @@
+{
+  "name": "Reframework_Process_Name",
+  "projectId": "e00f81a1-2489-4f7a-a35e-a7588ea81d8f",
+  "description": "Process description.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.23.3-preview]",
+    "UiPath.Mail.Activities": "[1.23.0]",
+    "UiPath.System.Activities": "[24.3.1]",
+    "UiPath.Testing.Activities": "[24.4.0-preview]",
+    "UiPath.UIAutomation.Activities": "[24.4.2-preview]",
+    "UiPath.WebAPI.Activities": "[1.18.0]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "24.4.0.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": true,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "a077fad8-3657-4dd3-9b9e-da304a71a816",
+        "dataVariationFilePath": ".variations\\TS_Process_Name_TC_SubWorkflowName.json",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\TC_SubWorkflowName.xaml"
+      },
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "2a5ee2e6-c151-4c47-90c9-ed9a577d5084",
+        "dataVariationFilePath": ".variations\\TS_Process_Name_TC_MainSteps.json",
+        "testCaseType": "TestCase",
+        "fileName": "Tests\\TC_Process.xaml"
+      }
+    ],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "CSharp",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "057bfdeb-d3a2-4cf3-b28e-78ad343696c0",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}
