@@ -145,7 +145,7 @@
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="For Workflows testing." DisplayName="_Sandbox" sap:VirtualizedContainerService.HintSize="716.4000000000001,789.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="For Workflows testing." DisplayName="_Sandbox" sap:VirtualizedContainerService.HintSize="691.6,789.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config" />
       <Variable x:TypeArguments="njl:JObject" Name="jsonConfig" />
@@ -158,7 +158,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - 148" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 151" sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">
@@ -249,7 +249,7 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - 149" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Warn">
+            <ui:LogMessage DisplayName="Log Message - 152" sap:VirtualizedContainerService.HintSize="382.4,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Warn">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71" xml:space="preserve">(System.IO.Path.GetDirectoryName(strConfigFilePath).Equals("Data") ? 
@@ -258,7 +258,7 @@
                 </InArgument>
               </ui:LogMessage.Message>
             </ui:LogMessage>
-            <ui:LogMessage DisplayName="Log Message - 150" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Warn">
+            <ui:LogMessage DisplayName="Log Message - 153" sap:VirtualizedContainerService.HintSize="382.4,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Warn">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">"Using Orchestrator folder: " + in_OrchestratorQueueFolder</CSharpValue>
@@ -314,7 +314,7 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - TransactionItem" sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign DisplayName="Assign - TransactionItem" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
           <OutArgument x:TypeArguments="ui:QueueItem">
             <CSharpReference x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">TransactionItem</CSharpReference>
@@ -327,7 +327,7 @@
           </InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign - dtTestTable" sap:VirtualizedContainerService.HintSize="433.6,106.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign DisplayName="Assign - dtTestTable" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_7">
         <Assign.To>
           <OutArgument x:TypeArguments="sd:DataTable">
             <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">dtTestTable</CSharpReference>
@@ -335,9 +335,10 @@
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="sd:DataTable">
-            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79" xml:space="preserve">new DataTable{
-	Columns = {"Status", {"Age", typeof(int)}},
-	TableName = "Test Table" //Optional
+            <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91" xml:space="preserve">new DataTable{
+	TableName = "Tabela123", //Optional
+	Columns = {"Status", {"Age", typeof(int)}}, 
+	Rows = {{"A", 1}, {"B", 2}}
 }</CSharpValue>
           </InArgument>
         </Assign.Value>
@@ -511,19 +512,19 @@
     </ui:CommentOut>
     <ui:CommentOut sap2010:Annotation.AnnotationText="Get Login and Password from Orchestrator Credencials." DisplayName="Comment Out - Get Orchestrator Credencials" sap:VirtualizedContainerService.HintSize="449.6,101.6" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
-        <Sequence sap2010:Annotation.AnnotationText="Get Login and Password from Orchestrator Credencials." DisplayName="Get Orchestrator Credencials" sap:VirtualizedContainerService.HintSize="416,53.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <Sequence sap2010:Annotation.AnnotationText="Get Login and Password from Orchestrator Credencials." DisplayName="Get Orchestrator Credencials" sap:VirtualizedContainerService.HintSize="449.6,441.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="strLogin" />
             <Variable x:TypeArguments="ss:SecureString" Name="sstrPass" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Robot1_OutlookCredentials" CacheStrategy="None" DisplayName="Get Credential - Orchestrator" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="387.2,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2">
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="Robot1_OutlookCredentials" CacheStrategy="None" DisplayName="Get Credential - Orchestrator" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="416,184.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2">
             <ui:GetRobotCredential.Password>
               <OutArgument x:TypeArguments="ss:SecureString">
                 <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">sstrPass</CSharpReference>
@@ -535,7 +536,7 @@
               </OutArgument>
             </ui:GetRobotCredential.Username>
           </ui:GetRobotCredential>
-          <ui:LogMessage DisplayName="Log Message - 151" sap:VirtualizedContainerService.HintSize="387.2,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn">
+          <ui:LogMessage DisplayName="Log Message - 154" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Warn">
             <ui:LogMessage.Message>
               <InArgument x:TypeArguments="x:Object">
                 <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">"Login: " + strLogin + Environment.NewLine + "Pass: " + (new System.Net.NetworkCredential(string.Empty, sstrPass).Password).ToString()</CSharpValue>
@@ -552,7 +553,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:LogMessage DisplayName="Log Message - 152" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+    <ui:LogMessage DisplayName="Log Message - 155" sap:VirtualizedContainerService.HintSize="449.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
           <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">

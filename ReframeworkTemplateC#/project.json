@@ -4,6 +4,7 @@
   "description": "Process description.",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.Database.Activities": "[2.0.0]",
     "UiPath.Excel.Activities": "[2.23.3-preview]",
     "UiPath.Mail.Activities": "[1.23.0]",
     "UiPath.System.Activities": "[24.3.1]",
