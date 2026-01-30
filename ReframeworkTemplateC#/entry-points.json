@@ -9,16 +9,20 @@
         "type": "object",
         "properties": {
           "in_OrchestratorQueueName": {
-            "type": "string"
+            "type": "string",
+            "description": "Optional string value. Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file."
           },
           "in_OrchestratorQueueFolder": {
-            "type": "string"
+            "type": "string",
+            "description": "Optional string value. Allows the Orchestrator folder name where the queue and all other assets are created to be passed as an argument, instead of only being defined in the configuration file."
           },
           "in_PopulateQueue": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Required boolean value. If value is set to:\nTrue (default) - then Queue is populated with new QI,\nFalse - then Queue populating is skipped."
           },
           "in_EnvironmentProd": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Required boolean value. If value is set to:\nTrue (default) - then production settings will be used, \nFalse - then test settings will be used."
           }
         },
         "required": [
